@@ -1,0 +1,62 @@
+[
+	{
+		"nombre":"'Lasa' - Bilbao",
+		"img":"areeta_bilbao",
+		"id":1,
+		"desc": "Skatepark situado en Las Arenas / Areeta, Bilbao."
+	},
+	{
+		"nombre":"Deusto - Bilbao",
+		"img":"deusto_bilbao",
+		"id":2,
+		"desc": "Skatepark con una mini de skatelite y un halfpipe de metal. Tiene también un circuito de street. En general está en malas condiciones."
+	},
+	{
+		"nombre":"Raw Indoor - Logroño",
+		"img":"logrono_raw_indoor",
+		"id":3,
+		"desc": "Indoor de madera (DM) con rocódromo y gimnasio situado a las afueras de Logroño."
+	},
+	{
+		"nombre":"Marseille",
+		"img":"marseille_classic",
+		"id":4,
+		"desc": "El mítico skatepark de Marseille, Francia. Junto a la playa."
+	},
+	{
+		"nombre":"Palais Omnisports - Marseille, Francia",
+		"img":"marseille_indoor",
+		"id":5,
+		"desc": "Skatepark indoor en Marseille. Posee también una pista de patinaje y otra de hockey sobre hielo."
+	},
+	{
+		"nombre":"Miranda de Ebro",
+		"img":"miranda_ebro",
+		"id":6,
+		"desc": "Skatepark de Miranda de Ebro."
+	},
+	{
+		"nombre":"Le Hangar (Zona 1) - Nantes, Francia",
+		"img":"nantes_lehangar_1",
+		"id":7,
+		"desc": "Zona principal del skatepar Le Hangar, en Nantes."
+	},
+	{
+		"nombre":"Le Hangar (Zona 2) - Nantes, Francia",
+		"img":"nantes_lehangar_2",
+		"id":8,
+		"desc": ""
+	},
+	{
+		"nombre":"Forward Freestyle - Roeselare, Bélgica.",
+		"img":"roeselare_forward_freestyle",
+		"id":9,
+		"desc": "Skatepark cubierto en Roeselare, Bélgica."
+	},
+	{
+		"nombre":"Skateland - Rotterdam, Paises Bajos",
+		"img":"skateland_rotterdam",
+		"id":10,
+		"desc": "Una de las zonas de Skateland. Foto de 2010."
+	}
+]

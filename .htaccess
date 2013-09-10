@@ -1,0 +1,6 @@
+#php_value allow_url_fopen on
+
+RewriteEngine On
+
+RewriteCond $1 !^(index\.php|resources|robots\.txt|crossdomain\.xml|favicon\.ico|apple-touch-icon-precomposed\.png|apple-touch-icon\.png|corp|sitemapindex\.xml|apple-touch-icon-114x114\.png|apple-touch-icon-114x114-precomposed\.png)
+RewriteRule ^(.*)$ /index.php/$1 [L]
