@@ -26,6 +26,7 @@ tasklist
 * [x] Load images from flickr
 * [x] Load images from Imgur
 * [x] Load external files
+* [ ] error handling (max-image-size) when loading file from Imgur / elsewhere and WebGL is used
 * [ ] add button to viewer page to let users link to their panoramas
 * [ ] geolocate panoramas (using openStreetMap)
 * [ ] better design
