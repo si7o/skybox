@@ -10,6 +10,13 @@ class Pano extends App{
 		
 		$data = $this->json->get_pano($id);
 		$this->load_view('pano', $data);		
+	}
+	
+	function yours() {
+		$data= array();
+		$data['menu'] = $this->load_view('comun/menu', $data, true);
+		
+		$this->load_view('your_pano',$data);
 	}    
     
     function flickr($photo_id) { 
@@ -88,6 +95,7 @@ class Pano extends App{
         $data['desc'] = $desc;
         $data['img'] = $image_data->data->link;
         $data['url'] = 'http://www.imgur.com/'.$image_data->data->id;
+		$data['width'] = $image_data->data->width;
         
         $data['equirectangular'] = ( $image_data->data->width/$image_data->data->height == 2?'true':'false' );
         
@@ -108,7 +116,8 @@ class Pano extends App{
             $data['desc']= '<a href="'.$img_url.'" target="_blank">'.$img_url.'</a>';
             
             $data['img'] = $img_url;
-        
+			
+        	$data['width'] = $image_size[0];
             $data['equirectangular'] = ( $image_size[0]/$image_size[1] == 2?'true':'false' );
             
             $this->load_view('file', $data);
