@@ -43,8 +43,8 @@
 		
 		<script>
         <?if ( isset($photo_id) && $photo_id && $can_load):?>				
-		window.onload = function () {
-		    Pano.init('<?=$img?>','file',<?=$equirectangular?>);
+		window.onload = function () {			
+		    Pano.init('<?=$img?>','file',<?=$equirectangular?>,<?=$width?>);
 		};
 		<?else:?>
 		  var x = window.confirm('Sorry, this photo can not be shown. \nWould you like to go to imgur now?');
