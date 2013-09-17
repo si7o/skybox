@@ -26,15 +26,26 @@ class App {
 			
 	}
 	
-	function load_view($view, $data = false) {
+	function load_view($view, $data = false, $return_contents = false) {
 		
 		if ($data)
-			extract($data);		
+			extract($data);
+		
+		ob_start();
 		
 		$file_path = VIEW_PATH.$view.'.php';
 		if (file_exists($file_path)){
 			require_once $file_path;
 		}
+		
+		if ($return_contents===true) {
+			$buffer = ob_get_contents();
+			@ob_end_clean();
+			return $buffer;
+		}
+		
+		ob_end_flush();		
+		
 		
 	}
 	
