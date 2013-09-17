@@ -16,7 +16,7 @@ class Router {
 		$uri = trim($uri,'/');
 		
 		$this->uri = $uri;
-				
+						
 		foreach ($this->routes as $key => $val)
 		{
 			if (preg_match('#^'.$key.'$#', $uri))
@@ -28,7 +28,11 @@ class Router {
 				
 				$this->req = explode('/', $val);
 			}
-		}			
+		}	
+		
+		if(!isset($this->req) && $this->uri) {
+			$this->req = explode('/', $this->uri);
+		}		
 		
 	}
 	
