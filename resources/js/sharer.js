@@ -90,7 +90,7 @@ var Sharer = {
 		}
 		else
 		{
-			sself.resultBox.style.display='none';
+			self.resultBox.style.display='none';
 			self.msgBox.innerHTML='';
 		}						
 		
