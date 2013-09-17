@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>VR skateparks</title>
+		<title>VR viewer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" />
@@ -35,7 +35,7 @@
 		    <p class="desc"><?=$desc?></p>
 		    <div class="bg"></div>
 		</div>
-
+		
 		<script>
 		window.onload = function () {
 		    Pano.init('<?=$img?>','normal',true);

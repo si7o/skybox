@@ -8,35 +8,94 @@ body.pano {
 	overflow: hidden;
 }
 
-
-a {
-	color: #ffffff;
+body.home .centered{
+	width:800px;
+	left:50%;
+	margin-left:-400px;
+	position:relative;
 }
 
-h2.titulo {
-	background: none repeat scroll 0 0 #2B2B2B;
+a, a:visited{
+	color: #ffffff;
+	text-decoration:none;
+}
+
+a:hover{
 	color: #FFCC00;
-	height: 45px;
-	line-height: 45px;
+	text-decoration:underline;
+}
+
+#menu_bar{
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 0;
-	padding-left: 40px;
+	width:100%;
+	top:0;		
+	height: 45px;
+	background: none repeat scroll 0 0 #2B2B2B;
 	position: fixed;
-	top: 0;
-	width: 100%;
 	z-index: 100;
+	box-shadow: 0 0 4px #000000;
+}
+
+#menu{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	top:0;	
+	height: 45px;	
+}
+
+#menu.centered{
+	width: 800px;
+	margin-left:-400px;
+	left:50%;
+	position:relative;
+}
+
+h2.titulo {	
+	color: #FFCC00;	
+	line-height: 45px;	
+	padding-left: 15px;
+	margin:0;
+	text-shadow: 0 0 5px #FFCC00;	
+}
+
+#menu ul{
+	color: #DFDFDF;
+	display: inline;
+	font-size: 14px;
+	left: 110px;
+	list-style: none outside none;
+	position: absolute;
+	top: 3px;
+}
+
+#menu ul li{
+	display:inline;	
+	padding-right:5px;
+	padding-left:8px;
+	border-left: 1px solid #787878;
+}
+#menu ul li:first-child{
+	border-left:none;
+	padding-left:0px;
 }
 
 .about{
-	color:#ffffff;
-	font-size:11px;
-	position: relative;
-	float: right;
-	min-width:300px;
-	padding: 10px;
+	color: #FFFFFF;
+	display: table;
+	font-size: 11px;
 	margin-bottom: 10px;
+	margin-left: 320px;
+	min-width: 300px;
+	padding: 0 10px;
+	position: fixed;
 	top: 55px;
+}
+
+.about p.desc{
+	font-size:12px;
 }
 
 ul.services {
@@ -46,55 +105,98 @@ ul.services {
 ul.services li{
 	list-style:square;
 }
-div.generate p{
+div.generate {
 	display:block;
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 #photo_url{
-	padding:1px;
+	padding:1px 4px;
 	display:block;
 	height: 20px;
 	line-height: 20px;
 	border:none;
 	font-size:10px;
-	width:200px;
-	background: #666666;
-	position:absolute;
+	width:217px;
+	background: #C6C6C6;
+	position:relative;
+	float:left;
 }
 
 #btn_generar_url{	
 	color: #FFCC00;
 	cursor:pointer;
-	width: 45px;
+	width: 58px;
 	height: 22px;
 	line-height: 22px;
 	vertical-align:middle;
 	text-align: center;
 	background:#2B2B2B;
-	position:absolute;	
+	position:relative;
+	float:left;	
 	display:block;
-	left:202px;
 }
 
- #btn_generar_url:hover{
+#btn_generar_url:hover{
 	background: #FFCC00;
 	color: #000;
 }
 
- #url_sharer{
-	display:block;
-	position:relative;
-	top:30px;	
+#url_sharer{
+	background: none repeat scroll 0 0 #0B0B0B;
+	border: 1px solid #303030;
+	box-shadow: 0 0 3px #505050;
+	border-radius: 3px;
+	display: block;
+	left: 0;
+	padding: 15px 5px;
+	position: absolute;
+	text-align: center;
+	bottom: 0px;
+	display:none;
+	width:100%;
 }
 
- #url_sharer a, #url_sharer a:visited, #url_sharer a:hover {
+
+#url_sharer > a {
+	text-align:center;
+} 
+
+#url_sharer a, #url_sharer a:visited, #url_sharer a:hover {
  	color: #FFCC00;
  	text-decoration:none;
- }
+ 	font-size:16px; 	
+}
  
- #url_sharer a:hover {
+#url_sharer a:hover {
  	text-decoration: underline;
- }
+}
+
+#url_sharer .close {
+	background: none repeat scroll 0 0 #2B2B2B;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	height: 22px;
+	line-height: 22px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 22px;
+	border-top-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+#url_sharer .close:hover {
+	background:#FFCC00;
+	color:#121212;
+}
+
+#msg{
+	top:8px;
+	position:relative;
+}
 
 .glow{
 	text-shadow: 0 0 3px #cccccc;
@@ -337,3 +439,37 @@ ul.listado_panoramicas img{
    border-bottom:10px solid #ffcc00;
    padding: 10px;
 }
+
+@media (max-width:800px){  
+   ul.listado_panoramicas{
+   		float:none;
+   		position:absolute;
+   		top:237px;
+   }      
+   
+   .about{   		
+   		float:left;
+   		top:55px;
+   		position:absolute;
+   		width: 300px;
+   		margin-left:0;
+   }             
+  
+   	body.home .centered, #menu.centered{
+		width:320px;
+		left:50%;
+		margin-left:-160px;
+		position:relative;
+	}
+	
+	
+	#menu ul{
+		font-size:12px;
+		top:6px;
+	}
+	
+	#menu h2{
+		font-size:20px;
+	}
+
+}  
