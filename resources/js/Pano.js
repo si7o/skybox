@@ -1,11 +1,24 @@
 var Pano = {		
-	infoVisible : true, 	
+	infoVisible : true, 
+	
+  	/** 
+  	 * 
+  	 * 	init(filename,type,equirectangular,sizes)
+	 *
+	 *  Initializes the panorama for flash, webgl or canvas.
+	 * 
+	 * @param filename : file or photo id
+	 * @param type: normal / flickr / file
+	 * @param equirectangular : true/false
+	 * @param sizes: flickr sizes or image width
+	 * 
+	 */		
 	init: function(filename,type,equirectangular,sizes) {		
 		var self = this;		
 		
 		self.type = type;
 		self.photo = filename;
-		self.sizes = sizes || null;
+		self.sizes = sizes || null;		
 		self.equirectangular = equirectangular;
 		self.file = '/resources/textures/'+filename,		
 		self.container = document.getElementById( 'container' );
@@ -35,12 +48,26 @@ var Pano = {
 				self.mode.innerHTML = 'WebGL';		
 				var gl;		
 				var myCanvas = document.createElement( 'canvas' );
-				try {
-					// Try to grab the standard context. If it fails, fallback to experimental.
-					gl = myCanvas.getContext("canvas") || myCanvas.getContext("experimental-webgl");
-					self.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);		
+				
+				// Try to grab the standard context. If it fails, fallback to experimental
+				gl = myCanvas.getContext("canvas") || myCanvas.getContext("experimental-webgl");
+				self.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);	
+				
+				//check image size
+				if (typeof(self.sizes)!='array' && self.maxTextureSize < self.sizes ) {
+					//WebGL wont be able to hadle the image, we warn the user and try with canvas
+					alert('Image is too big. Browser may crash.');
+					
+					if( Detector.canvas) 
+					{
+						self.mode.innerHTML = 'Canvas';
+						self.loadCanvas();
+					}
+					
+				} else {
 					self.loadWebGL();
-				} catch(e) {};				
+				}	
+								
 			} 
 			else if (Detector.canvas ) 
 			{
@@ -329,6 +356,12 @@ var Pano = {
 		window.addEventListener( 'resize', 	function(e) {self.onWindowResize();},	false );
 	},
 	
+	/**
+	 * addListenersInfo ()
+	 * 
+	 * Listeners for the info box
+	 * 
+	 */
 	addListenersInfo: function (){
 		var self = this;	
 		
@@ -366,6 +399,9 @@ var Pano = {
 		
 	},
 	
+	/****************************************
+	 ****          LISTENER FUNCTIONS
+	 *****************************************/ 
 	onWindowResize: function() {
 		var self = this;	
 		
@@ -500,6 +536,9 @@ var Pano = {
 		}	
 	},
 	
+	/****************************************
+	 ****       ThreeJS renderers
+	 *****************************************/ 
 	animate : function() {
 		var self = this;	
 		
