@@ -104,7 +104,7 @@ h2.titulo a:hover{
 }
 
 .about p.desc{
-	font-size:14px;
+	font-size:12px;
 }
 
 ul.services {
@@ -115,7 +115,7 @@ ul.services li{
 	list-style:square;
 }
 div.generate {
-	display:table;
+	display:block;
 	padding-top:10px;
 	padding-bottom:10px;
 }

@@ -23,11 +23,8 @@
 	           <br /> Works on desktop & mobile.
            </p>
            <div> 
-            <strong>To view your equirectangular images paste the link to your image or Flickr/Imgur photo URL into the box below:</strong>
-            <ul class="services">
-               <li>Images have to be equirectangular (360x180º)</li>
-               <li>If you want to link to your Flickr image, check image permissions</li>               
-            </ul>
+            <strong>To view your equirectangular images paste the link to your image or Flickr/Imgur photo URL into this box:</strong>
+            
             <div class="generate">                
                <input name="photo_url" id="photo_url" type="text" value=""/>	               
                <span id="btn_generar_url" > get url </span>
@@ -37,7 +34,10 @@
                <br />
             </div>  
             
-            
+            <ul class="services">
+               <li>Images have to be equirectangular (360x180º)</li>
+               <li>If you want to link to your Flickr image, check image permissions</li>               
+            </ul>
            </div>
        </div>
 	   
