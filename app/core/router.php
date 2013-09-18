@@ -7,7 +7,7 @@ class Router {
 		$this->routes = $routes;
 		
 		$this->_check_routes();
-		$this->_validate_request();		
+		$this->_validate_request();
 	}
 	
 	private function _check_routes() 
@@ -63,12 +63,27 @@ class Router {
 			else 
 			{
 				$this->routing['function_params'] = array();	
-			}
-				
-			
+			}				
 		}
-		else if ($this->uri)
+		
+		//check if the function exists within the controller
+		if ($this->routing['controller_name'])
 		{
+			$file_path = CONTROLLER_PATH.$this->routing['controller_name'].'.php';	
+			$arr_name = explode('/',$this->routing['controller_name']);
+			$var_name = array_pop($arr_name);
+			$class_name = ucfirst($var_name);
+			
+			require_once $file_path;
+			$controller = new $class_name();
+			
+			if (method_exists($controller, $this->routing['function_name']))
+			return;	
+		}
+		
+		// if we reach this point.. it's a 404 or homepage
+		if ($this->uri)
+		{			
 			$this->routing['controller_name'] = $this->routes['error404'];
 			$this->routing['function_name'] = 'index';
 			$this->routing['function_params'] = array();
@@ -80,5 +95,4 @@ class Router {
 			$this->routing['function_params'] = array();
 		}
 	}
-	
 }

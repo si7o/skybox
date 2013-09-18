@@ -4,6 +4,8 @@
  * MAIN CONSTANTS & INCLUDES
  * 
  */
+error_reporting(E_ERROR);
+
 define("DS","/",true);
 define('BASE_PATH',realpath(dirname(__FILE__)).DS,true);
 

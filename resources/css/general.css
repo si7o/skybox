@@ -58,7 +58,16 @@ h2.titulo {
 	line-height: 45px;	
 	padding-left: 15px;
 	margin:0;
-	text-shadow: 0 0 5px #FFCC00;	
+	text-shadow: 0 0 3px #FFCC00;	
+}
+
+h2.titulo a,h2.titulo a:visited{
+	color: #FFCC00;
+	text-decoration:none;
+}
+h2.titulo a:hover{
+	color: #FFCC00;
+	text-shadow: 0 0 8px #FFCC00;
 }
 
 #menu ul{
@@ -118,7 +127,7 @@ div.generate {
 	line-height: 20px;
 	border:none;
 	font-size:10px;
-	width:217px;
+	width:210px;
 	background: #C6C6C6;
 	position:relative;
 	float:left;
@@ -136,6 +145,8 @@ div.generate {
 	position:relative;
 	float:left;	
 	display:block;
+	font-size:13px;
+	font-weight:bold;
 }
 
 #btn_generar_url:hover{

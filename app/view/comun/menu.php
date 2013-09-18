@@ -1,7 +1,9 @@
 <div id="menu_bar">	
 	<div id="menu" class="centered">
    		<h2 class="titulo">
-       		VR Viewer
+       		<a href="/">
+       			VR Viewer
+       		</a>	
    		</h2> 
    		<ul>
    			<li><a href="/pano/yours">share your image</a></li>

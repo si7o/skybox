@@ -1,7 +1,7 @@
 <?php
 
 $routes['default'] = "home";
-$routes['error404'] = "404";
+$routes['error404'] = "error404";
 
 $routes['pano/(\d+)/([a-zA-Z0-9\-]+)'] = "pano/viewer/$1/$2";
 
