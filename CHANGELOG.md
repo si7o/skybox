@@ -1,3 +1,12 @@
+
+== v0.6
+  * Responsive improvements
+  * Added configuration
+  	* Lets the user decide between auto/flash/webgl/canvas mode
+  	* saves configuration using a cookie
+  * Share image button added to panorama
+  * PHP views refactoring
+
 == v0.5.1:
   * Custom 404 page
   

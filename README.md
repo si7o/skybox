@@ -23,8 +23,6 @@ define ('IMGUR_CLIENT_ID', '--------YOUR IMGUR CLIENT ID--------');
 tasklist
 --------
 
-* [ ] add button to viewer page to let users link to their panoramas
 * [ ] geolocate panoramas (using openStreetMap)
-* [ ] default 404 error page
 * [ ] add MySQL databases to MVC &  use a database instead of JSON files?
 
