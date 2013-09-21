@@ -9,7 +9,10 @@ class Pano extends App{
 		$this->load_model('json');
 		
 		$data = $this->json->get_pano($id);
-		$this->load_view('pano', $data);		
+		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
+		$data['config'] = $this->load_view('comun/config', null, true);
+		
+		$this->load_view('pano', $data);
 	}
 	
 	function yours() {
@@ -19,7 +22,11 @@ class Pano extends App{
 		$this->load_view('your_pano',$data);
 	}    
     
-    function flickr($photo_id) { 
+    function flickr($photo_id) {
+    	
+		
+		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
+		$data['config'] = $this->load_view('comun/config', null, true); 
         
         // photo info //
         $flickr_info_url = FL_API_URL.
@@ -74,6 +81,10 @@ class Pano extends App{
 
     function imgur($photo_id){
         
+		
+		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
+		$data['config'] = $this->load_view('comun/config', null, true);
+		
         $imgur_image_url = IMGUR_API_URL.'image'.DS.$photo_id;
     
         //$imgur_image_url = "http://imgur.com/$photo_id";
@@ -106,6 +117,10 @@ class Pano extends App{
     }
 
     function file(){
+    	
+		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
+		$data['config'] = $this->load_view('comun/config', null, true);
+		
         $img_url=$_GET['path'];
         
         $image_size = getimagesize($img_url);

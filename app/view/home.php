@@ -10,8 +10,10 @@
 		
 		<script src="/resources/js/comun.js"></script>
 		<script src="/resources/js/Detector.js"></script>
-		<script src="/resources/js/Pano.js"></script>
+		<script src="/resources/js/Cookie.js"></script>
+		<script src="/resources/js/Config.js"></script>
 		<script src="/resources/js/sharer.js"></script>
+		
 	</head>
 	<body class="home">
 		
@@ -30,6 +32,8 @@
 		       
 	           <?endforeach;?>
 		   </ul>
+		   
+		   <?=$config?>
 		   
 		   <div id="about" class="about">
 		   	   <p class="desc">	
@@ -63,4 +67,12 @@
 	       </div>
 	   </div>
 	</body>
+	
+	<script language="JavaScript">
+		window.onload = function () {
+			Config.init();		    
+			Sharer.init();
+		};
+		
+	</script>
 </html>
