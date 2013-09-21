@@ -2,6 +2,7 @@ body {
 	background-color: #121212;
 	margin: 0px;
 	font-family: Arial, Helvetica, sans-serif;
+	min-width:800px;
 }
 
 body.pano {
@@ -38,6 +39,30 @@ a:hover{
 	box-shadow: 0 0 4px #000000;
 }
 
+#menu_bar .yours{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -203px transparent;
+}
+
+#menu_bar .yours:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -298px transparent;
+}
+
+#menu_bar .git{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -240px transparent;
+}
+
+#menu_bar .git:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -335px transparent;
+}
+
+#menu_bar .conf{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -222px transparent;
+}
+
+#menu_bar .conf:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -317px transparent;
+}
+
 #menu{
 	margin-left: 0;
 	margin-right: 0;
@@ -51,6 +76,128 @@ a:hover{
 	margin-left:-400px;
 	left:50%;
 	position:relative;
+}
+
+#menu ul{
+	color: #DFDFDF;
+	display: inline;
+	font-size: 14px;
+	left: 150px;
+	list-style: none outside none;
+	position: absolute;
+	top: 3px;
+	padding-left:0;
+}
+
+#menu ul li{
+	
+	display:inline;	
+	padding-right:5px;
+	padding-left:5px;
+	border-left: 1px solid #787878;
+}
+#menu ul li:first-child{
+	border-left:none;	
+}
+
+#menu ul li a{
+	padding-left:18px;
+}
+
+
+.config{
+	position:fixed;
+	display:none;
+	top: 70px;
+	height:98px;
+	width:250px;
+	left:50%;
+	margin-left:-130px;
+	color: #DEDEDE;
+	background:#353535;
+	z-index:10000;
+	font-size:12px;
+	user-select: none;
+	padding:20px 5px;
+	border:1px solid #2B2B2B;
+	box-shadow: 0 0 4px #000000;
+}
+
+body.pano .config{
+	margin-left: 45px;
+	left:0;
+	top:5px;
+}
+
+.config ul{
+	display: block;
+	height: 30px;
+	margin: 20px 0 5px;
+	padding: 0;
+}
+
+.config ul li{	
+	list-style: none;
+	display: inline;	
+	background: none repeat scroll 0 0 #898989;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: block;
+	float:left;
+	line-height: 30px;
+	text-align: center;
+	width: 60px;
+	margin-right:3px;
+}
+
+.config ul li:last-child{
+	margin:0;
+}
+
+
+
+.config ul li:hover{
+	background: #797979;
+}
+
+.config ul li.disabled{
+	color:#727272;
+	cursor:default;
+}
+
+.config ul li.selected{
+	background: none repeat scroll 0 0 #FFCC00;
+	color: #121212;
+}
+
+#btn_save_config{
+	color: #FFCC00;
+	cursor:pointer;
+	height: 30px;
+	width:250px;
+	line-height: 30px;
+	vertical-align:middle;
+	text-align: center;
+	background:#2B2B2B;
+	position:relative;
+	display:block;
+	font-size:13px;
+	font-weight:bold;
+}
+#btn_save_config:hover{
+	background: #FFCC00;
+	color: #000;
+}
+
+.config_info{
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 12px;
+	position: absolute;
+	right: 5px;
+	text-align: right;
+	top: 32px;
 }
 
 h2.titulo {	
@@ -70,26 +217,6 @@ h2.titulo a:hover{
 	text-shadow: 0 0 8px #FFCC00;
 }
 
-#menu ul{
-	color: #DFDFDF;
-	display: inline;
-	font-size: 14px;
-	left: 110px;
-	list-style: none outside none;
-	position: absolute;
-	top: 3px;
-}
-
-#menu ul li{
-	display:inline;	
-	padding-right:5px;
-	padding-left:8px;
-	border-left: 1px solid #787878;
-}
-#menu ul li:first-child{
-	border-left:none;
-	padding-left:0px;
-}
 
 .about{
 	color: #FFFFFF;
@@ -155,10 +282,8 @@ div.generate {
 }
 
 #url_sharer{
-	background: none repeat scroll 0 0 #0B0B0B;
-	border: 1px solid #303030;
-	box-shadow: 0 0 3px #505050;
-	border-radius: 3px;
+	color: #DEDEDE;
+	background:#353535;
 	display: block;
 	left: 0;
 	padding: 15px 5px;
@@ -167,6 +292,8 @@ div.generate {
 	bottom: 0px;
 	display:none;
 	width:100%;
+	box-shadow: 0 0 4px #000000;
+	border:1px solid #2B2B2B;
 }
 
 
@@ -184,19 +311,21 @@ div.generate {
  	text-decoration: underline;
 }
 
-#url_sharer .close {
+.close {
 	background: none repeat scroll 0 0 #2B2B2B;
+	color: #FFCC00;
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: bold;
-	height: 22px;
-	line-height: 22px;
+	padding: 5px 10px;
 	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 22px;
-	border-top-right-radius: 3px;
-	border-bottom-left-radius: 3px;
+	right: 0;
+	text-align: center;
+	top: 0;
+}
+.close:hover {
+	color:#121212;
+	background: #FFCC00;
 }
 
 #url_sharer .close:hover {
@@ -272,7 +401,7 @@ ul.listado_panoramicas img{
 
 #botones {
     background: url(/resources/img/bg_botones.jpg) repeat-x scroll 0 0 #2B2B2B;
-	height: 130px;
+	height: 150px;
 	left: 0;
 	line-height: 25px;
 	position: absolute;
@@ -295,33 +424,56 @@ ul.listado_panoramicas img{
 }
 
 #botones .ocultar{ 
-	background: url("/resources/img/sprite.png") no-repeat scroll -43px -0px transparent ;
+	background: url("/resources/img/sprite.png") no-repeat scroll -119px -73px transparent ;
     cursor: pointer;          
     height: 33px;
     width: 33px;
     position: relative;
     float:left;  
-    margin:5px;
-    margin-bottom:5px;
+    margin:2px 5px;
 }
 
 #botones .atras{ 
-	background: url("/resources/img/sprite.png") no-repeat scroll -0px -0px transparent ;
+	background: url("/resources/img/sprite.png") no-repeat scroll -0px -73px transparent ;
     cursor: pointer;          
     height: 33px;
     width: 33px;
     position: relative;
     float:left;  
-    margin:5px;
-    margin-bottom:5px;
+   	margin:2px 5px;
 }
 
+#botones .conf{ 
+	background: url("/resources/img/sprite.png") no-repeat scroll -80px -73px transparent ;
+    cursor: pointer;          
+    height: 33px;
+    width: 33px;
+    position: relative;
+    float:left;  
+    margin:2px 5px;
+}
+#botones .yours{ 
+	background: url("/resources/img/sprite.png") no-repeat scroll -40px -73px transparent ;
+    cursor: pointer;          
+    height: 33px;
+    width: 33px;
+    position: relative;
+    float:left;  
+    margin:2px 5px;
+}
 
 #botones .ocultar:hover {
-	background: url("/resources/img/sprite.png") repeat scroll -43px -40px transparent ;
+	background: url("/resources/img/sprite.png") repeat scroll -119px -39px transparent ;
 	}
 #botones .atras:hover {
-	background: url("/resources/img/sprite.png") repeat scroll 0px -40px transparent ;
+	background: url("/resources/img/sprite.png") repeat scroll -1px -39px transparent ;
+	
+}
+#botones .conf:hover {
+	background: url("/resources/img/sprite.png") repeat scroll -80px -39px transparent ;
+	}
+#botones .yours:hover {
+	background: url("/resources/img/sprite.png") repeat scroll -40px -39px transparent ;
 	
 }
 
@@ -460,27 +612,53 @@ ul.listado_panoramicas img{
    
    .about{   		
    		float:left;
-   		top:55px;
+   		top:65px;
    		position:absolute;
    		width: 300px;
    		margin-left:0;
-   }             
+   }
+   
+   	body{
+    	min-width:320px;
+   	}             
   
    	body.home .centered, #menu.centered{
 		width:320px;
 		left:50%;
 		margin-left:-160px;
 		position:relative;
+		
+	}
+	.config{
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	.close{
+		padding:12px 17px;
+	}
+	
+	/** MENU **/
+	
+	#menu_bar{
+		height:55px;		
 	}
 	
 	
 	#menu ul{
+		margin-top:28px; 
+		left: 10px;
 		font-size:12px;
 		top:6px;
 	}
 	
-	#menu h2{
+	h2.titulo{
+		line-height:26px;
 		font-size:20px;
-	}
+	}	
 
 }  
