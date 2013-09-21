@@ -26,6 +26,8 @@ var Pano = {
 		self.mode = document.getElementById( 'mode' );
 		self.loader = document.getElementById( 'loader' );
 		
+		Config.init();
+		
 		self.addListenersInfo();			
 		
 		if (self.equirectangular){
@@ -38,47 +40,43 @@ var Pano = {
 			}	
 			
 			// mode
-			if (false && Detector.flash) 
-			{						
-				self.mode.innerHTML = 'Flash';
-				self.loadFlash();
-			} 
-			else if(Detector.webgl) 
-			{			
-				self.mode.innerHTML = 'WebGL';		
-				var gl;		
-				var myCanvas = document.createElement( 'canvas' );
-				
-				// Try to grab the standard context. If it fails, fallback to experimental
-				gl = myCanvas.getContext("canvas") || myCanvas.getContext("experimental-webgl");
-				self.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);	
-				
-				//check image size
-				if (typeof(self.sizes)!='array' && self.maxTextureSize < self.sizes ) {
-					//WebGL wont be able to hadle the image, we warn the user and try with canvas
-					alert('Image is too big. Browser may crash.');
+			switch (Config.mode){
+				case 'flash':
+					self.mode.innerHTML = 'Flash';
+					self.loadFlash();
+					break;
+				case 'webgl':
+					self.mode.innerHTML = 'WebGL';		
+					var gl;		
+					var myCanvas = document.createElement( 'canvas' );
 					
-					if( Detector.canvas) 
-					{
-						self.mode.innerHTML = 'Canvas';
-						self.loadCanvas();
-					}
+					// Try to grab the standard context. If it fails, fallback to experimental
+					gl = myCanvas.getContext("canvas") || myCanvas.getContext("experimental-webgl");
+					self.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);	
 					
-				} else {
-					self.loadWebGL();
-				}	
-								
-			} 
-			else if (Detector.canvas ) 
-			{
-				//self.maxTextureSize = 1024;
-				self.mode.innerHTML = 'Canvas';
-				self.loadCanvas();
-			} 
-			else  
-			{
-				self.container.innerHTML ='Su navegador no soporta WebGL, Canvas ni flash. <br /> Por favor actualice su navegador';
-			}	
+					//check image size
+					if (typeof(self.sizes)!='array' && self.maxTextureSize < self.sizes ) {
+						//WebGL wont be able to hadle the image, we warn the user and try with canvas
+						alert('Image is too big. Browser may crash.');
+						
+						if( Detector.canvas) 
+						{
+							self.mode.innerHTML = 'Canvas';
+							self.loadCanvas();
+						}
+						
+					} else {
+						self.loadWebGL();
+					}	
+					break;
+				case 'canvas':
+					self.mode.innerHTML = 'Canvas';
+					self.loadCanvas();
+					break;
+				default:
+					self.container.innerHTML ='Su navegador no soporta WebGL, Canvas ni flash. <br /> Por favor actualice su navegador';
+			}
+			
 		} 
 		else
 		{
