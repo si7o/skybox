@@ -19,6 +19,11 @@ var Sharer = {
 		self.inputBox.onclick = function(){			
 			this.select();
 		};
+		self.inputBox.onkeypress = function(e){			
+			if (e.keyCode == 13) {
+		        self.createUrl();
+		    }
+		};
 		/*
 		self.inputBox.onchange = function(){			
 			self.createUrl();
@@ -72,11 +77,11 @@ var Sharer = {
 		self.resultBox.innerHTML='Your panorama URL is: <br /> <a class="" href="'+url+'" target="_blank" >'+url+'</a><span class="close" onclick="Sharer.hideURL();">X</span>'; 
 		if (Detector.userAgent=='pc')
 		{
-			$('#url_sharer').slideDown(250);
+			$('#url_sharer').fadeIn(250);
 		}
 		else
 		{
-			self.resultBox.style.display='block';
+			self.resultBox.style.display='table';
 			self.msgBox.innerHTML='';
 		}
 	
@@ -86,7 +91,7 @@ var Sharer = {
 		
 		if (Detector.userAgent=='pc')
 		{
-			$(self.resultBox).slideUp('fast');
+			$(self.resultBox).fadeOut('fast');
 		}
 		else
 		{
