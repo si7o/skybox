@@ -108,6 +108,18 @@ var Detector = {
 
 		parent.appendChild( element );
 
+	},
+	
+	getDefaultMode: function()
+	{
+		if (this.flash)
+			return 'flash';
+		else if (this.webgl)
+			return 'webgl';
+		else if (this.canvas)
+			return 'canvas';
+		else 
+			return 'none';
 	}
 
 };
