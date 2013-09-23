@@ -1,3 +1,6 @@
+== v0.6.1
+  * CSS/JS minor changes
+
 
 == v0.6
   * Responsive improvements
