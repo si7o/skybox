@@ -1,6 +1,12 @@
 var Config = {
 	cName: 'vr',
 	mode: 'auto',
+	
+	/** init
+	 * 
+	 * Initializes object
+	 * 
+	 */
 	init: function ()
 	{		
 		var self = this;
@@ -12,6 +18,11 @@ var Config = {
 		self.setMode();
 	},
 	
+	/** setListeners()
+	 * 
+	 * Sets listeners
+	 * 
+	 */
 	setListeners: function ()
 	{
 		var self = this;
@@ -26,6 +37,11 @@ var Config = {
 		
 	},
 	
+	/** loadConfig()
+	 * 
+	 * Loads config from cookie or sets default
+	 * 
+	 */
 	loadConfig: function ()
 	{
 		var self = this;
@@ -52,6 +68,14 @@ var Config = {
        }
 	},
 	
+	/** optionClick(elem, elems)
+	 * 
+	 * Handler called when user clicks an option
+	 * 
+	 * @param elem
+	 * @param elems
+	 * 
+	 */
 	optionClick: function (elem, elems) 
 	{
 		var self = this;
@@ -69,6 +93,11 @@ var Config = {
 		}
 	},
 	
+	/** saveConfig()
+	 * 
+	 * Saves configuration
+	 * 
+	 */
 	saveConfig: function (){
 		var self = this;
 		
@@ -79,6 +108,11 @@ var Config = {
 			Cookie.remove(self.cName);
 	},
 	
+	/** setMode()
+	 * 
+	 * Sets the panorama mode
+	 * 
+	 */
 	setMode: function() {
 		var self = this;
 		switch(self.mode){
@@ -102,6 +136,11 @@ var Config = {
 		}
 	},
 	
+	/** toggleConfig()
+	 *
+	 * Toggles between hide & show 
+	 * 
+	 */
 	toggleConfig: function() 
 	{
 		var self = this;
@@ -112,6 +151,11 @@ var Config = {
 		
 	},
 	
+	/** show()
+	 * 
+	 * Shows config window
+	 * 
+	 */
 	show: function() 
 	{
 		var self = this;
@@ -126,6 +170,11 @@ var Config = {
 		}
 	},
 	
+	/** hide()
+	 * 
+	 *  Hides config window
+	 * 
+	 */
 	hide: function ()
 	{
 		var self = this;

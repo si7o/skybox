@@ -1,9 +1,23 @@
+/** log(txt)
+ *
+ * Logs message to console 
+ * 
+ * @param txt - string/object
+ *  
+ */
 function log(txt) 
 {
 	if(typeof(console)!='undefined')
 		console.log(txt);
 }
 
+/** loadScript(url)
+ *
+ * Loads a js file
+ * 
+ * @param url - string - path to js file
+ *  
+ */
 function loadScript(url)
 {
     // adding the script tag to the head as suggested before

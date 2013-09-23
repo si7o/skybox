@@ -1,6 +1,12 @@
 /**
+ *
+ * Checks browser compatibility & user agent
+ * 
+ *  
+ * The part refering to Canvas/WebGL made by:
  * @author alteredq / http://alteredqualia.com/
- * @author mr.doob / http://mrdoob.com/
+ * @author mr.doob / http://mrdoob.com/ 
+ * 
  */
 
 var Detector = {

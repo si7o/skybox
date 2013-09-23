@@ -1,4 +1,9 @@
 var Sharer = {
+	/** init()
+	 *
+	 * Initializes object
+	 *  
+	 */
 	init: function(){
 		var self = this;
 
@@ -9,6 +14,12 @@ var Sharer = {
 		
 		self.addEvents();
 	},
+	
+	/** addEvents()
+	 *
+	 * Sets events & event handlers
+	 *  
+	 */
 	addEvents: function () {
 		var self = this;
 		/*
@@ -33,6 +44,12 @@ var Sharer = {
 			self.createUrl();
 		};
 	},
+	
+	/** createUrl()
+	 *
+	 * Tries to create the url for the panorama
+	 *  
+	 */
 	createUrl: function () {
 		var self = this;
 		
@@ -63,6 +80,12 @@ var Sharer = {
 		}		
 	},
 	
+	/** showMessage(txt)
+	 *
+	 * Shows a message into an html element
+	 *  
+	 * @param txt - string - message
+	 */
 	showMessage: function (txt){
 		var self = this;
 		
@@ -70,6 +93,12 @@ var Sharer = {
 		
 	},
 	
+	/** showURL(url)
+	 *
+	 * Displays the url of into an html element
+	 *  
+	 * @param url - string - url of the panorama
+	 */
 	showURL: function (url){
 		var self = this;
 		
@@ -86,6 +115,12 @@ var Sharer = {
 		}
 	
 	},
+	
+	/** hideURL()
+	 *
+	 * Hides the html element where the url is shown
+	 *  
+	 */
 	hideURL: function(){
 		var self = this;
 		
