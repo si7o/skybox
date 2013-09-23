@@ -106,6 +106,9 @@ var Config = {
 			Cookie.create(self.cName,self.mode,10);
 		else
 			Cookie.remove(self.cName);
+			
+		document.getElementById( 'btn_save_config' ).innerHTML='Saved! <small>closing this...</small>';
+		setTimeout(self.hide,1000);
 	},
 	
 	/** setMode()
@@ -160,6 +163,8 @@ var Config = {
 	{
 		var self = this;
 		
+		document.getElementById( 'btn_save_config' ).innerHTML='Save Config';
+		
 		if (Detector.userAgent=='pc')
 		{			
 			$('div.config').fadeIn(250);
@@ -186,6 +191,7 @@ var Config = {
 		else
 		{
 			self.configBox.style.display='none';
-		}
+		}	
+		
 	}
 }
