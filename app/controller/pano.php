@@ -14,13 +14,6 @@ class Pano extends App{
 		
 		$this->load_view('pano', $data);
 	}
-	
-	function yours() {
-		$data= array();
-		$data['menu'] = $this->load_view('comun/menu', $data, true);
-		
-		$this->load_view('your_pano',$data);
-	}    
     
     function flickr($photo_id) {
     	
