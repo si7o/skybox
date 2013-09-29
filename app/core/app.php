@@ -2,28 +2,26 @@
 
 
 class App {
+	
 	public function App() {
-		
+		$this->load_library('cache');
 	}
 	
-	public static function &get_instance()
+	function load_controller ($name) 
 	{
-		return self::$instance;
+		$this->load_class($name,CONTROLLER_PATH);
+			
 	}	
 	
-	function load_controller ($name) {
-		$file_path = CONTROLLER_PATH.$name.'.php';
-		
-		$arr_name = explode('/',$name);
-		$var_name = array_pop($arr_name);
-		$class_name = ucfirst($var_name);
-		
-		if (file_exists($file_path)){
-			require_once $file_path;
-			if (!isset ($this->$var_name ) )
-				$this->$var_name = new $class_name();
-		}
+	function load_library ($name) 
+	{
+		$this->load_class($name,LIBRARY_PATH);
 			
+	}
+	
+	function load_model($name) 
+	{				
+		$this->load_class($name,MODEL_PATH);
 	}
 	
 	function load_view($view, $data = false, $return_contents = false) {
@@ -49,8 +47,9 @@ class App {
 		
 	}
 	
-	function load_model($name) {				
-		$file_path = MODEL_PATH.$name.'.php';
+	private function load_class($name,$path)
+	{				
+		$file_path = $path.$name.'.php';
 		$arr_name = explode('/',$name);
 		$var_name = array_pop($arr_name);
 		$class_name = ucfirst($var_name);
@@ -62,6 +61,9 @@ class App {
 		}
 		
 	}
+	
+	
+	
 }
 
 
