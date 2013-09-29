@@ -1,3 +1,18 @@
+== v0.7
+  * MVC core changes
+  * removed *your pano* page
+  * factorized views
+  * minor changes to js,css,html
+  * added CACHE system
+  	* saves json files for flickr calls
+  	* 1min, 10min & 1hour caches  
+  * added Flickr functionality
+  	* show latest 50 photos from flickr tagged as equirectangular / 360x180 / 180x360
+  	* show all photos from a user tagged as equirectangular / 360x180 / 180x360
+  	* changed views location
+  	* separate controller for flickr
+  
+
 == v0.6.1
   * CSS/JS minor changes
 
