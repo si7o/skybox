@@ -11,3 +11,11 @@ $routes['proxyFlickrImage/(\d+)/(\d+)'] = "pano/getFlickrImage/$1/$2";
 $routes['proxy\?(.*)'] = "pano/proxyImage";
 $routes['pano/imgur/(\w+)'] = "pano/imgur/$1";
 $routes['pano/file/?\?(.*)'] = "pano/file";
+
+$routes['about'] = "home/about";
+
+$routes['flickr'] = "flickr/index";
+$routes['flickr/(\d+)'] = "flickr/photo/$1";
+
+$routes['flickr/photos/([^/]+)/(\d+)'] = "flickr/photo/$2";
+$routes['flickr/photos/([^/]+)'] = "flickr/user/$1";
