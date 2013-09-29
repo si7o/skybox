@@ -29,9 +29,11 @@
 		
 		<?=$menu?>
 		
-		<div id="info">		      
-		    <p class="titulo"><?=$nombre?></p>
-		    <p class="desc"><?=$desc?></p>
+		<div id="info">	
+			<p>	      
+		    <span class="titulo"><?=$nombre?></span>
+		    <span class="desc"><?=$desc?></span>
+		    </p>
 		    <div class="bg"></div>
 		</div>
 		

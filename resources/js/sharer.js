@@ -55,9 +55,14 @@ var Sharer = {
 		
 		var url_photo = self.inputBox.value;
 		if (url_photo) {
-			if (match = url_photo.match(/flickr.com\/photos\/[^\/]+\/([0-9]+)/))
+			if (match = url_photo.match(/flickr.com\/photos\/([^\/]+)\/([0-9]+)/))
 			{
-				url_pano = 'http://'+window.location.host+'/pano/flickr/'+match[1];
+				log(match[2]);
+				url_pano = 'http://'+window.location.host+'/flickr/photos/'+match[1]+'/'+match[2]+'/';
+				self.showURL(url_pano);
+			} else if (match = url_photo.match(/flickr.com\/photos\/([^\/]+)/))
+			{
+				url_pano = 'http://'+window.location.host+'/flickr/photos/'+match[1]+'/';
 				self.showURL(url_pano);
 			} 
 			else if(match = url_photo.match(/imgur.com\/(\w+)/))
@@ -107,6 +112,7 @@ var Sharer = {
 		if (Detector.userAgent=='pc')
 		{
 			$('#url_sharer').fadeIn(250);
+			self.msgBox.innerHTML='';
 		}
 		else
 		{
