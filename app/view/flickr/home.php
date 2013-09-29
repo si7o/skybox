@@ -28,7 +28,7 @@
 		           		<span class="flickr_list"><?=$photo->title?></span>	          	
 		        		<img src="<?=$photo->url_n?>" />
 		           	</a>
-		           	<div class="by">by <a class="user" href="/flickr/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/" target="_blank"><?=$photo->ownername?></a> on <a class="flickr" href="http://www.flickr.com/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/<?=$photo->id?>/" target="_blank">Flickr</a> </div>
+		           	<div class="by">by <a class="user" href="/flickr/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/"><?=$photo->ownername?></a> on <a class="flickr" href="http://www.flickr.com/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/<?=$photo->id?>/" target="_blank">Flickr</a> </div>
 		       	</li>
 		       	<?endif;?>
 		       
