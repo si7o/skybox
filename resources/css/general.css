@@ -78,28 +78,44 @@ body.home .centered{
 	box-shadow: 0 0 4px #000000;
 }
 
-#menu_bar .yours{
+#menu .flickr{
+	background: url("/resources/img/sprite.png") no-repeat scroll -5px -275px transparent;
+}
+
+#menu .flickr:hover, #menu .flickr.selected{
+	background: url("/resources/img/sprite.png") no-repeat scroll -241px -275px transparent;
+}
+
+#menu .about{
+	background: url("/resources/img/sprite.png") no-repeat scroll -3px -259px transparent;
+}
+
+#menu .about:hover, #menu .about.selected{
+	background: url("/resources/img/sprite.png") no-repeat scroll -239px -259px transparent;
+}
+
+#menu .yours{
 	background: url("/resources/img/sprite.png") no-repeat scroll -3px -203px transparent;
 }
 
-#menu_bar .yours:hover{
-	background: url("/resources/img/sprite.png") no-repeat scroll -3px -298px transparent;
+#menu .yours:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -239px -203px transparent;
 }
 
-#menu_bar .git{
+#menu .git{
 	background: url("/resources/img/sprite.png") no-repeat scroll -3px -240px transparent;
 }
 
-#menu_bar .git:hover{
-	background: url("/resources/img/sprite.png") no-repeat scroll -3px -335px transparent;
+#menu .git:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -239px -240px transparent;
 }
 
-#menu_bar .conf{
+#menu .conf{
 	background: url("/resources/img/sprite.png") no-repeat scroll -3px -222px transparent;
 }
 
-#menu_bar .conf:hover{
-	background: url("/resources/img/sprite.png") no-repeat scroll -3px -317px transparent;
+#menu .conf:hover{
+	background: url("/resources/img/sprite.png") no-repeat scroll -239px -222px transparent;
 }
 
 #menu{
@@ -139,8 +155,15 @@ body.home .centered{
 	border-left:none;	
 }
 
-#menu ul li a{
+#menu ul li a, #menu ul li a:visited{
 	padding-left:18px;
+	color:#ffffff;
+}
+
+#menu ul li a:hover, #menu ul li a.selected{
+	padding-left:18px;
+	color:#FFCC00;
+	text-decoration:none;
 }
 
 h2.titulo {	
@@ -352,7 +375,7 @@ body.pano .config{
  ***
  *******************************************************************************************/
 
-.about{
+div.about{
 	color: #FFFFFF;
 	display: table;
 	font-size: 11px;
@@ -362,11 +385,21 @@ body.pano .config{
 	padding: 0 10px;
 	position: fixed;
 	top: 55px;
+	
 }
 
-.about p.desc{
+div.about p.desc{
 	font-size:12px;
+	line-height:16px;
 }
+
+
+
+/*******************************************************************************************
+ ***
+ ***                       SHARE BOX
+ ***
+ *******************************************************************************************/
 
 ul.services {
 	padding-left:10px;
@@ -379,9 +412,16 @@ div.generate {
 	display:block;
 	padding-top:10px;
 	padding-bottom:10px;
+	font-size: 12px;
 }
 
-#photo_url{
+.generate .form{
+	width:100%;
+	position:relative;
+	height:25px;
+}
+
+#photo_url{	
 	padding:1px 4px;
 	display:block;
 	height: 20px;
@@ -389,20 +429,22 @@ div.generate {
 	border:none;
 	font-size:10px;
 	width:210px;
-	background: #C6C6C6;
+	text-indent:15px;
+	background: url("/resources/img/sprite.png") repeat-x scroll -1px -200px  #A6A6A6;
 	position:relative;
 	float:left;
 }
+
 
 #btn_generar_url{	
 	color: #FFCC00;
 	cursor:pointer;
 	width: 58px;
 	height: 22px;
+	background:#2B2B2B;
 	line-height: 22px;
 	vertical-align:middle;
 	text-align: center;
-	background:#2B2B2B;
 	position:relative;
 	float:left;	
 	display:block;
@@ -450,6 +492,10 @@ div.generate {
 	position:relative;
 }
 
+.generate ul{
+	font-size:11px;
+}
+
 /*******************************************************************************************
  ***
  ***                       HOME
@@ -471,9 +517,14 @@ ul.listado_panoramicas li {
 	min-height:150px;
 }
 
-ul.listado_panoramicas li:hover > a span{	
+ul.listado_panoramicas li img{	
+	width:300px;
+}
+
+
+ul.listado_panoramicas li a:hover span{	
 	border-bottom:3px solid #ffcc00;
-	opacity: 0.7;
+	opacity: 0.8;
 	text-shadow: 0px 0px 3px #ffffff;
 }
 
@@ -481,8 +532,9 @@ ul.listado_panoramicas li span{
 	background: none repeat scroll 0 0 #000000;
 	font-family: arial;
 	height: 35px;
+	overflow:hidden;
 	line-height: 35px;
-	opacity: 0.6;
+	opacity: 0.7;
 	position: absolute;
 	text-indent: 10px;
 	width: 300px;
@@ -493,6 +545,54 @@ ul.listado_panoramicas img{
 	position: relative;
 	z-index: 1;
 	border: none;
+}
+/*******************************************************************************************
+ ***
+ ***                       FLICKR HOME
+ ***
+ *******************************************************************************************/
+
+.flickr h3{
+	font-size:26px;
+	margin-bottom:0px;
+	color: #ffffff;
+}
+.flickr h4{
+	font-size:12px;
+	margin-top:0px;
+	color:#a0a0a0;
+	font-weight:normal;
+}
+ul.listado_panoramicas li span.flickr_list{
+	font-size:14px;
+}
+
+ul.listado_panoramicas li .by{
+	color: #DEDEDE;
+	font-size: 12px;
+	position: relative;
+	text-align: right;
+	top: 0;
+	margin-bottom:20px;
+}
+
+a.user, a.user:visited{
+	font-weight:bold;
+	
+}
+
+a.user:hover{
+	
+}
+
+a.flickr, a.flickr:visited{
+	color: #0063DC;
+	text-decoration:none;
+	
+}
+a.flickr:hover{
+	color:#ff0084;
+	text-decoration:underline;
 }
 
 /*******************************************************************************************
@@ -525,9 +625,10 @@ ul.listado_panoramicas img{
     position: absolute;
     width: 100%;
     z-index: 900;    
-    min-height:70px;
+    
     font-family: Arial, Helvetica, sans-serif;
 	box-shadow: 1px 1px 6px #000000;
+	padding-top:5px;padding-bottom:5px;
 }
 
 #info .bg{
@@ -537,55 +638,48 @@ ul.listado_panoramicas img{
 	width: 100%;
 	height: 100%;
 	z-index:1;
-	opacity: 0.9;
+	opacity: 0.9;	
 }
 
 #info p{
-    margin-left: 10px;	
-    margin-right: 10px;	    
-    margin-top: 8px;  
-    margin-bottom: 0px;
-    padding-left:50px;  
-    z-index:10;
+    margin-right: 5px;	    
+    margin-top: 3px;  
+    margin-bottom: 3px;
+    padding-left:50px;      
+    color: #DEDEDE;
+    font-size: 12px;
+    line-height: 18px;	
+    z-index: 10;
+    position:relative;
+    
 }
 
 #info .titulo{
-    position: relative;			    
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
-    z-index: 2;
-    line-height:20px;
-    vertical-align: middle;
+    color: #FFFFFF;	
+	font-size: 16px;
+	font-weight: bold;
+	margin-right:5px;
 }
 
-#info .desc{
-    position: relative;                
-    font-size: 12px;
-    color: #dedede;
-    z-index: 2;
-    line-height:20px;
-    vertical-align: middle;
-}
 
-#info a.flickr, #info a.flickr:visited{	
+a.flickr, #info a.flickr:visited{	
 	color: #0063DC;
 	font-size: 12px;		
-	line-height: 21px;
-	vertical-align: middle;
+	line-height: 20px;
+	top:-1px;
 	font-weight:bold;
 	text-decoration:none;
 		
 }
-#info a.flickr:hover{
+a.flickr:hover{
 	color: #ff0084;
 	text-decoration: underline;
 }
 
-#info a.flickr span{		
+a.flickr span{		
 	font-size: 18px;
 }
-#info a.flickr span span{		
+a.flickr span span{		
 	color: #ff0084;	
 }
 
@@ -650,7 +744,11 @@ ul.listado_panoramicas img{
    		top:237px;
    }      
    
-   .about{   		
+   .home_flickr  ul.listado_panoramicas{
+   		top:300px ;
+   }
+   
+   div.about{   		
    		float:left;
    		top:65px;
    		position:absolute;
@@ -700,5 +798,9 @@ ul.listado_panoramicas img{
 		line-height:26px;
 		font-size:20px;
 	}	
+	
+	#info .desc {
+		display:none;
+	}
 
 }  
