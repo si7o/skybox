@@ -1,64 +1,82 @@
 <?php
 
-class Pano extends App{
-	function Pano () {
-		parent::__construct();	
+class Flickr extends App{
+	function Flickr () {		
+		
+		$this->load_model('flickr_model');
 	}
 	
-	function viewer($id, $uri='') {
-		$this->load_model('json');
+	function index() {
+		$data['selected']='flickr';
+		$data['menu'] = $this->load_view('comun/menu', $data, true);
+		$data['config'] = $this->load_view('comun/config', null, true);
+		$data['generate'] = $this->load_view('comun/generate', null, true); 
 		
-		$data = $this->json->get_pano($id);
+		$data['photos'] = $this->flickr_model->getAllPhotos();
+		//debug($data['photos']);
+		$this->load_view('flickr/home', $data);
+	}	
+	
+    function user($username) {
+    	
+		
+		$data['menu'] = $this->load_view('comun/menu', null, true);
+		$data['config'] = $this->load_view('comun/config', null, true); 
+		$data['generate'] = $this->load_view('comun/generate', null, true); 		
+		
+		$data['photos'] = $this->flickr_model->getUserPhotos($username);
+		
+		$data['username']= isset($data['photos']->photo[0]->ownername) && $data['photos']->photo[0]->ownername? $data['photos']->photo[0]->ownername:$username;
+		
+		//debug($data['photos']); die;
+		$this->load_view('flickr/user', $data);
+    }
+
+	function photo($photo_id) {
+		
+		
 		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
 		$data['config'] = $this->load_view('comun/config', null, true);
 		$data['generate'] = $this->load_view('comun/generate', null, true); 
 		
-		$this->load_view('pano', $data);
-	}
-    
-    function imgur($photo_id){
-        
+		$flickr = $this->flickr_model->getPhoto($photo_id);
 		
-		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
-		$data['config'] = $this->load_view('comun/config', null, true);
-		$data['generate'] = $this->load_view('comun/generate', null, true); 
-		
-        $imgur_image_url = IMGUR_API_URL.'image'.DS.$photo_id;
-    
-        //$imgur_image_url = "http://imgur.com/$photo_id";
-        
-        $opts = array(
-               'http'=>array(
-                   'header'=>'Authorization: Client-ID '.IMGUR_CLIENT_ID
-               )
-        );
-        $context = stream_context_create($opts);
-        $image_data = json_decode(file_get_contents($imgur_image_url, false, $context));
-        
-        $data['can_load'] = $image_data->success || false;
+		$data['username'] = $flickr->info->photo->owner->path_alias?$flickr->info->photo->owner->path_alias:$flickr->info->photo->owner->nsid;
+        $data['can_load'] = $flickr->info->photo->usage->canshare || false;
         $data['photo_id'] = $photo_id;
-        $data['title']= $image_data->data->title;
-        $desc = strip_tags($image_data->data->description);
+        $data['title']= $flickr->info->photo->title->_content;
+        $desc = strip_tags($flickr->info->photo->description->_content);
         if (strlen($desc)>200)
             $desc=substr($desc, 0,200).'...';
         $data['desc'] = $desc;
-        $data['img'] = $image_data->data->link;
-        $data['url'] = 'http://www.imgur.com/'.$image_data->data->id;
-		$data['width'] = $image_data->data->width;
+        $data['url'] = $flickr->info->photo->urls->url[0]->_content;
         
-        $data['equirectangular'] = ( $image_data->data->width/$image_data->data->height == 2?'true':'false' );
+                
+        $sizes = array();
+        foreach( $flickr->sizes->sizes->size as $img )
+        {
+            if ( $img->width>=1024 )
+            {
+                $sizes['img_'.$img->width]=$img;
+            }
+        }
+        $elem_tmp = array_shift(array_values($sizes));
         
-        //debug($image_data); debug($data); die;
-        if ($image_data)
-            $this->load_view('imgur', $data);
+        $data['equirectangular'] = ( $elem_tmp->width/$elem_tmp->height == 2?'true':'false' );
         
+        
+        $data['sizes'] = json_encode($sizes);
+        
+        //debug($data); die;        
+        
+        $this->load_view('flickr/photo', $data);
     }
+	   
 
     function file(){
     	
 		$data['menu'] = $this->load_view('comun/pano_menu', null, true);
 		$data['config'] = $this->load_view('comun/config', null, true);
-		$data['generate'] = $this->load_view('comun/generate', null, true); 
 		
         $img_url=$_GET['path'];
         
