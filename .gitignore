@@ -223,3 +223,4 @@ constants.php
 php.iniNOSUBIR
 php.ini
 app/controller/php.ini
+CACHE/*
