@@ -3,7 +3,7 @@
 class Flickr_model extends App{
 	public function getAllPhotos ($page=1){
 		$ttl=3600;
-		$key= __FUNCTION__.$page;
+		$key= 'photos_home_'.$page;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
@@ -54,7 +54,7 @@ class Flickr_model extends App{
 
 	public function getPhotosHome ($page=1){
 		$ttl=3600;
-		$key= __FUNCTION__.$page;
+		$key= 'photos_home_'.$page;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
@@ -147,14 +147,16 @@ class Flickr_model extends App{
 	
 	public function getUserPhotos ($username){
 		$ttl=600;
-		$key= __FUNCTION__.$username;
+		$key= 'user_data'.$username;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
 		if (!$cache)
 		{
+			//if it is not an nsid, we try to get it
 			if( !strpos($username,'@'))
 			{
+				
 				$user_url = FL_API_URL.
 					'?method=flickr.urls.lookupUser'.
 					'&api_key='.FL_KEY.
@@ -203,9 +205,9 @@ class Flickr_model extends App{
 	
 	public function getPhoto ($photo_id){
 		$ttl=600;
-		$key= __FUNCTION__.$photo_id;
+		$key= 'photo_data'.$photo_id;
 		
-		$cache = $this->cache->get($key,$ttl);
+		$cache = $this->cache->get($key);
 		
 		if (!$cache)
 		{		
