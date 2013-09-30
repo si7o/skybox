@@ -7,52 +7,105 @@
  */
 class Cache  {
 	
-	
+	/** set (content, key, ttl)
+	 * 
+	 * Creates a cache file
+	 * 
+	 * @param content: data to save
+	 * @param key: string
+	 * @param ttl: int - seconds to cache
+	 * 
+	 */
 	public function set($content,$key,$ttl)
 	{
-			
 		if (CACHE)
-		{
-			$key= $key.$this->extra_key($ttl);
-					
-			$fileLocation = CACHE_PATH . $key;
-			$file = fopen($fileLocation,"w");
-			fwrite($file,$content);
+		{			
+			$path = $this->get_file_path($key);
+			$data = array(time()+$ttl,$content);
+			$data = serialize($data);
+			
+			$file = fopen($path,"w");
+			//we lock the file so no one writes nor reads it
+			flock($file,LOCK_EX);
+			
+			fwrite($file,$data);
+			
+			flock($file,LOCK_UN);
 			fclose($file);
 		}
 	} 
 	
-	public function get($key,$ttl) 
+	/** set (key)
+	 * 
+	 * loads a file from cache
+	 * 
+	 * @param key: string
+	 * 
+	 * @return (data)
+	 */
+	public function get($key) 
 	{
-		$key= $key.$this->extra_key($ttl);
-		$path = CACHE_PATH.$key;
+		//$key= $key.$this->extra_key($ttl);
+		$path = $this->get_file_path($key);
 		
-		if (CACHE && file_exists($path))
+		if (CACHE && file_exists($path))		
 		{
-			return file_get_contents($path);
+			$file = fopen($path,"r");
+			
+			if($file)
+			{
+				//we lock the file so it cannot be written while we read
+				flock($file,LOCK_SH);	
+				
+				$data = file_get_contents($path);
+				$data = @unserialize($data);
+				
+				flock($file,LOCK_UN);
+				fclose($file);
+	
+				if (!$data || $data[0]<time())
+				{
+					unlink($path);
+					return false;
+				} 
+				else 
+				{
+					return $data[1];
+				}
+			} else {
+				return false;
+			}
+			
 		}
 		else 
 		{
 			return false;
 		}
 		
+	}
+	
+	/** remove (key)
+	 * 
+	 * Deletes a cache file
+	 * 
+	 */
+	public function remove($key)
+	{
+		$path = $this->get_file_path($key);
+		unlink($path);
+        return true;
 	}	
 	
-	
-	private function extra_key($ttl)
+	/** get_file_path (key)
+	 * 
+	 * gets path to cache file
+	 * 
+	 * @return (string) path to file
+	 * 
+	 */
+	private function get_file_path($key)
 	{
-		$now = date('Y_m_d_H_i');
-		switch ($ttl) {
-			case 60:	//1 min
-				return $now;
-				break;
-			case 600:	//10 min
-				return substr($now, 0, -1);
-				break;							
-			default: //1 hour
-				return substr($now, 0, -3);
-				break;
-		}
-		
-	}	 
+		return CACHE_PATH.$key;
+	}
+			 
 }
