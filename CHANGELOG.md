@@ -1,3 +1,6 @@
+== v0.7.1
+  * added file locks for cache system
+
 == v0.7
   * MVC core changes
   * removed *your pano* page
