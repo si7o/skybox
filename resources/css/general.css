@@ -156,6 +156,8 @@ body.home .centered{
 }
 
 #menu ul li a, #menu ul li a:visited{
+	font-size:14px;
+	font-weight:normal;
 	padding-left:18px;
 	color:#ffffff;
 }
@@ -790,7 +792,6 @@ a.flickr span span{
 	#menu ul{
 		margin-top:28px; 
 		left: 10px;
-		font-size:12px;
 		top:6px;
 	}
 	
