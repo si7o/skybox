@@ -1,4 +1,5 @@
 == v0.7.1
+  * cache ttl can be wathever you need
   * added file locks for cache system
 
 == v0.7
