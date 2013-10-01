@@ -5,10 +5,10 @@ $routes['error404'] = "error404";
 
 $routes['pano/(\d+)/([a-zA-Z0-9\-]+)'] = "pano/viewer/$1/$2";
 
-//$routes['pano/flickr'] = "flickr/index";
-//$routes['pano/flickr/(\d+)'] = "flickr/photo/$1";
-$routes['proxyFlickrImage/(\d+)/(\d+)'] = "pano/getFlickrImage/$1/$2";
-$routes['proxy\?(.*)'] = "pano/proxyImage";
+$routes['proxy\?(.*)'] = "proxy/index";
+$routes['proxy/file/([^/]+)/referer/([^/]+)'] = "proxy/file/$1/$2";
+$routes['proxy/file/([^/]+)'] = "proxy/file/$1";
+
 $routes['pano/imgur/(\w+)'] = "pano/imgur/$1";
 $routes['pano/file/?\?(.*)'] = "pano/file";
 
