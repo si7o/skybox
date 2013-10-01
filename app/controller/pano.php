@@ -76,7 +76,7 @@ class Pano extends App{
             
             $this->load_view('file', $data);
         } else {
-            
+            $this->load_view('error404');
         }
     }    
 }
