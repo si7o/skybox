@@ -19,7 +19,15 @@
 		
 		<?=$menu?>
 		
-		<div class="centered">		   	   
+		<div class="centered">
+		   <?=$config?>		
+		   <div id="about" class="about">
+		   	   <p class="desc">	
+		           An equirectangular panorama viewer based on Canvas, WebGL (<a href="http://threejs.org" target="_blank">threejs.org</a>) & Flash (<a href="http://pan0.net" target="_blank">pan0.net</a>)
+		           <br /> Works on desktop & mobile.
+	           </p>	           
+	       </div>   
+	       	   
 		   <ul class="listado_panoramicas">
 		   		<? foreach ($panos as $pano) :?>
 		       
@@ -33,38 +41,7 @@
 	           <?endforeach;?>
 		   </ul>
 		   
-		   <?=$config?>
-		   
-		   <div id="about" class="about">
-		   	   <p class="desc">	
-		           An equirectangular panorama viewer based on Canvas, WebGL (<a href="http://threejs.org" target="_blank">threejs.org</a>) & Flash (<a href="http://pan0.net" target="_blank">pan0.net</a>)
-		           <br /> Works on desktop & mobile.
-	           </p>
-	           <div> 
-	            <strong>Use it with your own equirectangular Images:</strong>
-	            <ul class="services">
-	               <li>
-	                   For Flickr                   
-	               </li> 
-	               <li>
-	                   For imgur
-	               </li>
-	               <li>
-	                   For files hosted elsewhere
-	               </li>
-	            </ul>
-	            <div class="generate">
-	               Copy the photo url and paste it into this box:               
-	               <br />
-	               <input name="photo_url" id="photo_url" type="text" value=""/>
-	               <span id="btn_generar_url" > get url </span>
-	               <br />
-	               <span id="msg"></span>
-	               <span id="url_sharer"></span>
-	               <br />
-	            </div>           
-	           </div>
-	       </div>
+	       <?=$generate?>
 	   </div>
 	</body>
 	

@@ -27,6 +27,7 @@ var Pano = {
 		self.loader = document.getElementById( 'loader' );
 		
 		Config.init();
+		Sharer.init();
 		
 		self.addListenersInfo();			
 		
@@ -281,6 +282,7 @@ var Pano = {
 				}
 				
 				self.file = '/proxy?file='+imgsrc+'&referer='+window.location.href;
+				//self.file = '/proxy/file/'+imgsrc.replace(new RegExp('/', 'g'), '|')+'/referer/'+window.location.href.replace(new RegExp('/', 'g'), '|')+'/';
 				//log (self.file);
 				
 				

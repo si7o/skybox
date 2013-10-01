@@ -1,4 +1,6 @@
-<div class="generate"> 	
+<div class="generate" id="share_box"> 	
+	<p class='title'>Share your panorama(s)</p>
+	<span class="close" onclick="Sharer.hideGeneratePano();">X</span>
    	<p>
    	   To share your onw equirectangular panoramas, paste the URL in the box below.
    	   <br />
@@ -20,7 +22,7 @@
    	<div id="msg"></div>
    	<span id="url_sharer"></span>
    	<br />
-   	<ul class="services">
+   	<ul class="services extra">
        <li>Images have to be equirectangular (360x180º)</li>
        <li>If you want to link to your Flickr image, check image permissions</li>               
     </ul>

@@ -19,7 +19,21 @@
 		
 		<?=$menu?>
 		
-		<div class="centered">		   	   
+		<div class="centered">	
+			<?=$config?>
+			
+			<div id="about" class="about flickr">
+		   	   	<h3><?=$username?></h3>	
+		   	  	<h4>equirectangular panoramas from <a href="http://www.flickr.com/photos/<?=$username?>/" target="_blank" class="flickr">Flickr</a></h4>
+		   	   	<small></small>
+		   	      
+		   	   	<p class="desc">	
+		       	    You are watching <?=$username?>'s photos from Flickr tagged as 'equirectangular'. 
+		           	<br />If you want to share your panoramas, paste/type your <strong>Flickr user page</strong> or a <strong>photo page</strong> in the box below.
+		        	<br /><small>Works on desktop & mobile</small>.
+	           	</p>	       		
+	       </div>
+	       	   	   
 		   <ul class="listado_panoramicas">
 		   		<? foreach ($photos->photo as $photo) :?>
 		        <?if (isset($photo->o_width) && ($photo->o_width/$photo->o_height==2)):?>
@@ -35,34 +49,9 @@
 	           <?endforeach;?>
 		   </ul>
 		   
-		   <?=$config?>
+		   <?=$generate?>
 		   
-		   	<div id="about" class="about flickr">
-		   	   	<h3><?=$username?></h3>	
-		   	  	<h4>equirectangular panoramas from <a href="http://www.flickr.com/photos/<?=$username?>/" target="_blank" class="flickr">Flickr</a></h4>
-		   	   	<small></small>
-		   	      
-		   	   	<p class="desc">	
-		       	    You are watching <?=$username?>'s photos from Flickr tagged as 'equirectangular'. 
-		           	<br />If you want to share your panoramas, paste/type your <strong>Flickr user page</strong> or a <strong>photo page</strong> in the box below.
-		        	<br />Works on desktop & mobile.
-	           	</p>
-	       		<div> 
-		            <strong>only photos tagged as 'equirectangular' will be shown</strong>
-		            
-		            <div class="generate">
-		               	Your flickr url:               
-		               	<br />
-		               	<div class="form">           
-					       	<input name="photo_url" id="photo_url" type="text" value=""/>	               
-					       	<span id="btn_generar_url" > get url </span>					       	
-					    </div> 	            
-					   	<div id="msg"></div>
-					   	<span id="url_sharer"></span>
-					   	<br />		              
-		            </div>           
-		        </div>
-	       </div>
+		   	
 	   </div>
 	</body>
 	

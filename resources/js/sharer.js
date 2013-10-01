@@ -11,6 +11,8 @@ var Sharer = {
 		self.resultBox = document.getElementById( 'url_sharer' ); 
 		self.msgBox = document.getElementById( 'msg' );
 		self.generateBtn = document.getElementById( 'btn_generar_url' );
+		self.generateBtn_pano = document.getElementById( 'btn_yours' );
+		self.shareBox = document.getElementById( 'share_box' );
 		
 		self.addEvents();
 	},
@@ -34,7 +36,8 @@ var Sharer = {
 			if (e.keyCode == 13) {
 		        self.createUrl();
 		    }
-		};
+		};		
+		
 		/*
 		self.inputBox.onchange = function(){			
 			self.createUrl();
@@ -43,6 +46,10 @@ var Sharer = {
 		self.generateBtn.onclick = function(){
 			self.createUrl();
 		};
+		
+		if(self.generateBtn_pano)
+			self.generateBtn_pano.addEventListener('click',function (e) {self.toggleGeneratePano();});
+				
 	},
 	
 	/** createUrl()
@@ -139,6 +146,55 @@ var Sharer = {
 			self.resultBox.style.display='none';
 			self.msgBox.innerHTML='';
 		}						
+		
+	},
+	
+	toggleGeneratePano: function(){
+		var self = this;
+		
+		if (self.shareBox.style.display=='none' || self.shareBox.style.display=='')
+			self.showGeneratePano();
+		else
+			self.hideGeneratePano();
+	},
+	
+	/** showGeneratePano()
+	 * 
+	 *  Shows generate window
+	 * 
+	 */
+	showGeneratePano: function() 
+	{
+		var self = this;
+		
+		log('show');
+		if (Detector.userAgent=='pc')
+		{			
+			$('div.generate').fadeIn(250);
+		}
+		else
+		{
+			self.shareBox.style.display='block';
+		}
+	},
+	
+	/** hideGeneratePano()
+	 * 
+	 *  Hides generate window
+	 * 
+	 */
+	hideGeneratePano: function ()
+	{
+		var self = this;
+			
+		if (Detector.userAgent=='pc')
+		{			
+			$('div.generate').fadeOut('fast');
+		}
+		else
+		{
+			self.shareBox.style.display='none';
+		}	
 		
 	}
 	

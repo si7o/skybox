@@ -15,6 +15,7 @@
 		<script src="/resources/js/Cookie.js"></script>
 		<script src="/resources/js/Config.js"></script>
 		<script src="/resources/js/Pano.js"></script>
+		<script src="/resources/js/sharer.js"></script>
 	</head>
 	<body class="pano">
 	    <div id="debug">	    	
@@ -29,7 +30,7 @@
 	    <?endif?>
 	    
 	    <?=$config?>
-	    
+	    <?=$generate?>
 		<div id="container"></div>
 		
 		<?=$menu?>
