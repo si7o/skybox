@@ -100,10 +100,13 @@
    			</h2> 
    			<ul>
 				<li>
-					<a href="/">Home</a>
+					<a href="/">home</a>
 				</li>
 				<li>
-					<a href="/pano/yours/">Share your panorama</a>
+					<a href="/flickr/">for flickr</a>
+				</li>
+				<li>
+					<a href="/about/">about</a>
 				</li>
 				<li>
 					<a href="https://github.com/si7o/skybox">github</a>
