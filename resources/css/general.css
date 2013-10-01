@@ -293,10 +293,9 @@ h2.titulo a:hover{
 	box-shadow: 0 0 4px #000000;
 }
 
-body.pano .config{
-	margin-left: 45px;
-	left:0;
-	top:5px;
+body.pano .config{	
+	top:50%;
+	margin-top:-50px;
 }
 
 .config ul{
@@ -403,18 +402,70 @@ div.about p.desc{
  ***
  *******************************************************************************************/
 
+
+div.generate {
+	color: #DEDEDE;
+	display: block;
+	font-size: 12px;
+	margin-left: 320px;
+	padding: 0 10px;
+	position: fixed;
+	top: 130px;	
+}
+
+body.home div.generate .close{
+	display:none;
+}
+
+body.home div.generate #url_sharer .close{
+	display:block;
+}
+
+body.home_flickr div.generate{
+	top:210px;
+}
+
+body.aboutpage div.generate {
+	display:block;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size: 12px;
+	display:block;
+	position:relative;
+	top:0;
+	margin-left:0;
+	padding:0;
+}
+
+body.pano div.generate{
+	background: none repeat scroll 0 0 #353535;
+	color: #DEDEDE;
+	display: none;
+	font-size: 12px;
+	height: 200px;
+	left: 50%;
+	margin-left: -160px;
+	margin-top: -100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: absolute;
+	top: 50%;
+	width: 300px;
+	z-index: 1000;	
+	border:1px solid #2B2B2B;
+	box-shadow: 0 0 4px #000000;
+}
+
+body.pano div.generate ul.extra{
+	display:none;
+}
+
 ul.services {
 	padding-left:10px;
 }
 
 ul.services li{
 	list-style:square;
-}
-div.generate {
-	display:block;
-	padding-top:10px;
-	padding-bottom:10px;
-	font-size: 12px;
 }
 
 .generate .form{
@@ -423,6 +474,11 @@ div.generate {
 	height:25px;
 }
 
+.generate p.title{
+	margin-top:0;
+	font-size: 16px;
+    font-weight: bold;
+}
 #photo_url{	
 	padding:1px 4px;
 	display:block;
@@ -740,23 +796,35 @@ a.flickr span span{
  *******************************************************************************************/
 
 @media (max-width:800px){  
-   ul.listado_panoramicas{
-   		float:none;
-   		position:absolute;
-   		top:237px;
-   }      
-   
-   .home_flickr  ul.listado_panoramicas{
-   		top:300px ;
-   }
-   
-   div.about{   		
+    /*ul.listado_panoramicas{
    		float:left;
-   		top:65px;
-   		position:absolute;
+   		position:relative;
+   		top:237px;
+    }     */ 
+   
+    .home_flickr  ul.listado_panoramicas{
+   		top:300px ;
+    }
+   
+    div.about{   		
+   		float:left;
+   		/*top:65px;*/
+   		position:relative;
    		width: 300px;
    		margin-left:0;
-   }
+    }
+   
+   	div.generate{
+   		color: #DEDEDE;
+		display: block;
+		float: left;
+		font-size: 12px;
+		padding: 0 10px;
+		position: relative;
+		width: 300px;
+		margin-left:0;
+		top:0;
+   	}
    
    	body{
     	min-width:320px;
