@@ -14,7 +14,7 @@
 		<script src="/resources/js/Config.js"></script>
 		<script src="/resources/js/sharer.js"></script>
 	</head>
-	<body class="home">
+	<body class="home aboutpage">
 	   
 	   <?=$menu?>   
 	   
