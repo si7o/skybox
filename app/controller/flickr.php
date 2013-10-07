@@ -12,8 +12,13 @@ class Flickr extends App{
 		$data['config'] = $this->load_view('comun/config', null, true);
 		$data['generate'] = $this->load_view('comun/generate', null, true); 
 		
-		$data['photos'] = $this->flickr_model->getAllPhotos();
-		//debug($data['photos']);
+		$photos = $this->flickr_model->getAllPhotos();
+		
+		$data['photos'] = $photos->photos->photo;
+		/*echo '<!--';
+		debug($photos);
+		echo '-->';*/
+		
 		$this->load_view('flickr/home', $data);
 	}	
 	
