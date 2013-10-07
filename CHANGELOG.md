@@ -1,3 +1,7 @@
+== v0.7.2
+  * add some messages when no images found in flickr
+  * minor chages to css
+  
 == v0.7.1
   * cache ttl can be wathever you need
   * added file locks for cache system
