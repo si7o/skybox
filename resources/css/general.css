@@ -575,6 +575,16 @@ ul.listado_panoramicas li {
 	min-height:150px;
 }
 
+ul.listado_panoramicas li.error{
+	color: #DEDEDE;
+	font-weight: bold;
+	margin-top: 20px;	
+	text-align:right;
+} 
+ul.listado_panoramicas li.error a{
+	font-size:25px;
+} 
+
 ul.listado_panoramicas li img{	
 	width:300px;
 }
@@ -870,6 +880,10 @@ a.flickr span span{
 	
 	#info .desc {
 		display:none;
+	}
+	
+	#share_box{
+		top:20px;
 	}
 
 }  
