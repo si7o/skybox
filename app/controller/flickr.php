@@ -46,6 +46,13 @@ class Flickr extends App{
 		
 		$flickr = $this->flickr_model->getPhoto($photo_id);
 		
+		if(isset($flickr->info->photo))
+		{
+			$data['thumbnail']="http://farm{$flickr->info->photo->farm}.staticflickr.com/{$flickr->info->photo->server}/{$flickr->info->photo->id}_{$flickr->info->photo->secret}_m.jpg";
+		}
+		
+		
+						
 		$data['username'] = $flickr->info->photo->owner->path_alias?$flickr->info->photo->owner->path_alias:$flickr->info->photo->owner->nsid;
         $data['can_load'] = $flickr->info->photo->usage->canshare || false;
         $data['photo_id'] = $photo_id;
@@ -55,6 +62,7 @@ class Flickr extends App{
             $desc=substr($desc, 0,200).'...';
         $data['desc'] = $desc;
         $data['url'] = $flickr->info->photo->urls->url[0]->_content;
+		$data['self_url'] = DOMAIN_NAME."flickr/photos/".$data['username']."/".$photo_id."/";
         
                 
         $sizes = array();

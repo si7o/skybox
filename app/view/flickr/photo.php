@@ -5,6 +5,29 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" />
+		<link rel="image_src" href="<?=$thumbnail?>"/>
+		
+		
+		<!-- for Google -->		
+		<meta name="description" content="<?=$desc?>  - by <?=$username?> from Flickr" />
+		<meta name="keywords" content="<?=$title?>" />
+		
+		<meta name="author" content="<?=$username?>" />
+		<meta name="copyright" content="<?=$username?>" />
+		<meta name="application-name" content="VR viewer" />
+		
+		<!-- for Facebook -->          
+		<meta property="og:title" content="<?=$title?>" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="<?=$thumbnail?>" />
+		<meta property="og:url" content="<?=$self_url?>" />
+		<meta property="og:description" content="<?=$desc?> - by <?=$username?> from Flickr" />
+		
+		<!-- for Twitter -->          
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="<?=$title?>" />
+		<meta name="twitter:description" content="<?=$desc?>  - by <?=$username?> from Flickr" />
+		<meta name="twitter:image" content="<?=$thumbnail?>" />
 				
 		<script type="text/javascript" src="/resources/embed/swfobject.js"></script>		
 		<script src="/resources/js/three.min.js"></script>		
