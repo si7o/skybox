@@ -12,7 +12,7 @@ class Flickr_model extends App{
 			$flickr_all_photos_url = FL_API_URL.
 					'?method=flickr.photos.search'.
 					'&api_key='.FL_KEY.
-					'&tags=equirectangular%2C360x180%2C180x360'.
+					'&tags=equirectangular'.
 					//'&license=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8'.
 					'&privacy_filter=1'.
 					//'&safe_search=1'.
@@ -27,7 +27,7 @@ class Flickr_model extends App{
 			$flickr_all_photos_group_url = FL_API_URL.
 					'?method=flickr.photos.search'.
 					'&api_key='.FL_KEY.
-					//'&tags=equirectangular%2C360x180%2C180x360'.
+					//'&tags=equirectangular'.
 					'&group_id=44671723%40N00'.
 					'&privacy_filter=1'.
 					//'&safe_search=1'.
@@ -48,7 +48,7 @@ class Flickr_model extends App{
 		{
 			$flickr_all_photos = json_decode($cache);
 		}
-		return $flickr_all_photos->photos->photo;
+		return $flickr_all_photos;
 		
 	}
 
@@ -63,7 +63,7 @@ class Flickr_model extends App{
 			$flickr_all_photos_url = FL_API_URL.
 					'?method=flickr.photos.search'.
 					'&api_key='.FL_KEY.
-					'&tags=equirectangular%2C360x180%2C180x360'.
+					'&tags=equirectangular'.
 					//'&license=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8'.
 					'&privacy_filter=1'.
 					//'&safe_search=1'.
@@ -178,7 +178,7 @@ class Flickr_model extends App{
 						'?method=flickr.photos.search'.
 						'&user_id='.$nsid.
 						'&api_key='.FL_KEY.
-						'&tags=equirectangular%2C360x180%2C180x360'.
+						'&tags=equirectangular'.
 						//'&license=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8'.
 						'&privacy_filter=1'.
 						//'&safe_search=1'.
@@ -190,7 +190,6 @@ class Flickr_model extends App{
 				
 				$content = file_get_contents($flickr_user_photos_url);
 				$flickr_user_photos = json_decode($content);
-				
 			}
 			
 			if($flickr_user_photos && (int)$flickr_user_photos->photos->total > 0)
