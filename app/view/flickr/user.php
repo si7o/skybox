@@ -33,7 +33,9 @@
 		        	<br /><small>Works on desktop & mobile</small>.
 	           	</p>	       		
 	       </div>
-	       	   	   
+	       
+	       
+	       <?if (isset($photos) && count($photos)>0):?>	   	   
 		   <ul class="listado_panoramicas">
 		   		<? foreach ($photos->photo as $photo) :?>
 		        <?if (isset($photo->o_width) && ($photo->o_width/$photo->o_height==2)):?>
@@ -48,7 +50,17 @@
 		       
 	           <?endforeach;?>
 		   </ul>
-		   
+		   <?else:?>
+		   <ul class="listado_panoramicas">
+		       	<li class="error">
+		       		Ups! something went wrong
+		       		<br />
+		       		<small style="font-weight: normal">does <i><?=$username?></i> has images tagged as 'equirectangular'?</small>
+		       		<br />
+		       		<a href="/flickr/" onclick="window.location.reload(true);return false;">Try reloading this page</a>	          	
+		       	</li>
+		   </ul>
+		   <?endif;?>
 		   <?=$generate?>
 		   
 		   	

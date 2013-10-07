@@ -34,6 +34,7 @@
 	           	</p>	       		
 	       </div>
 	       
+	       <?if (isset($photos) && count($photos)>0):?>
 	       <ul class="listado_panoramicas">
 		   		<? foreach ($photos as $photo) :?>
 		        <?if (isset($photo->o_width) && ($photo->o_width/$photo->o_height==2)):?>
@@ -48,6 +49,17 @@
 		       
 	           <?endforeach;?>
 		   </ul>
+		   <?else:?>
+		   <ul class="listado_panoramicas">
+		       	<li class="error">
+		       		Ups! something went wrong
+		       		<br />
+		       		<a href="/flickr/" onclick="window.location.reload(true);return false;">Try reloading this page</a>	          	
+		       		<br />
+		       		<small>this may solve the problem</small>
+		       	</li>
+		   </ul>
+		   <?endif;?>
 	       
 	       <?=$generate?>
 	   </div>
