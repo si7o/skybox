@@ -29,7 +29,7 @@ define ('LIBRARY_PATH', APP_PATH.'libraries'.DS);
 
 define ('FL_KEY', '--------------------');
 define ('FL_FORMAT', 'json');
-define ('FL_API_URL','http://api.flickr.com/services/rest/');
+define ('FL_API_URL','https://api.flickr.com/services/rest/');
 
 define ('IMGUR_CLIENT_ID', '----------------');
 define ('IMGUR_API_URL', 'https://api.imgur.com/3/');
