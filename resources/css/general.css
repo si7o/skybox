@@ -421,7 +421,7 @@ body.home div.generate #url_sharer .close{
 	display:block;
 }
 
-body.home_flickr div.generate{
+body.home_flickr div.generate, body.home_px div.generate{
 	top:210px;
 }
 
@@ -781,6 +781,104 @@ a.flickr span span{
 	vertical-align: middle;
 }
 
+/*******************************************************************************************
+ ***
+ ***                       500px HOME
+ ***
+ *******************************************************************************************/
+
+.px500 h3{
+	font-size:26px;
+	margin-bottom:0px;
+	color: #ffffff;
+}
+.px500 h4{
+	font-size:12px;
+	margin-top:0px;
+	color:#a0a0a0;
+	font-weight:normal;
+}
+ul.listado_panoramicas_500 li span.px500_list{
+	font-size:14px;
+}
+
+ul.listado_panoramicas_500 li .by{
+	color: #DEDEDE;
+	font-size: 12px;
+	position: relative;
+	text-align: right;
+	top: 0;
+	margin-bottom:20px;
+}
+
+a.user, a.user:visited{
+	font-weight:bold;
+	
+}
+
+a.user:hover{
+	
+}
+
+a.px500, a.px500:visited{
+	color: #0063DC;
+	text-decoration:none;
+	
+}
+a.px500:hover{
+	color:#ff0084;
+	text-decoration:underline;
+}
+
+ul.listado_panoramicas_500{
+	margin-top: 60px; 	
+	padding: 0;
+	margin-left: 10px;
+	float:left;
+}
+
+ul.listado_panoramicas_500 li {	
+	list-style: none;	
+	display:block;
+	margin-bottom: 10px;
+	width:280px;
+	min-height:150px;
+}
+
+ul.listado_panoramicas_500 li.error{
+	color: #DEDEDE;
+	font-weight: bold;
+	margin-top: 20px;	
+	text-align:right;
+} 
+ul.listado_panoramicas_500 li.error a{
+	font-size:25px;
+} 
+
+ul.listado_panoramicas_500 li img{	
+	width:280px;
+}
+
+
+ul.listado_panoramicas_500 li a:hover span{	
+	border-bottom:3px solid #ffcc00;
+	opacity: 0.8;
+	text-shadow: 0px 0px 3px #ffffff;
+}
+
+ul.listado_panoramicas_500 li span{		
+	background: none repeat scroll 0 0 #000000;
+	font-family: arial;
+	height: 35px;
+	overflow:hidden;
+	line-height: 35px;
+	opacity: 0.7;
+	position: absolute;
+	text-indent: 10px;
+	width: 280px;
+	z-index: 10;
+}
+
 #debug {
    display:none;
    font-family: Arial;
@@ -812,7 +910,7 @@ a.flickr span span{
    		top:237px;
     }     */ 
    
-    .home_flickr  ul.listado_panoramicas{
+    .home_flickr  ul.listado_panoramicas, .home_px  ul.listado_panoramicas{
    		top:300px ;
     }
    
