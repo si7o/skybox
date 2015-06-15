@@ -26,4 +26,4 @@ tasklist
 
 * [ ] geolocate panoramas (using openStreetMap)
 * [ ] add MySQL databases to MVC &  use a database instead of JSON files?
-* [ ] Add support for 500px
+* [ ] ~~Add support for 500px~~ Not until 500px provides decent image sizes
