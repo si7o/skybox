@@ -6,7 +6,7 @@ Immersive viewer for equirectangular panoramas based on Canvas/WebGL (http://thr
 It ~~works~~ should work on desktop & mobile. If flash is not present on your computer/device, it will try to load panorama using WebGL or Canvas depending on your browser capabilities.
 
 *********************************************************
-*You can see it working here: http://vr.rollerblading.es*
+*You can see it working here: http://vr.andeandaran.com*
 
 configuration
 -------------
