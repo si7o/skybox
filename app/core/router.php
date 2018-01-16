@@ -1,6 +1,27 @@
 <?php
+/**
+ * 
+ * Router
+ * 
+ * 
+ * Router class for controllers
+ * 
+ * 
+ */
+require_once CORE_PATH.'routing.php';
 
-class Router {
+class Router {        
+        private $uri;
+        private $req;
+        private $routing;
+        
+        /**
+         * Router
+         * 
+         * Initializes Router. Loads configured routes and sets Route params
+         * and Routing object
+         * 
+         */
 	public function Router () 
 	{
 		include CONFIG_PATH.'routes.php';
@@ -9,7 +30,35 @@ class Router {
 		$this->_check_routes();
 		$this->_validate_request();
 	}
+        
+        /**
+         * getRouting
+         * 
+         * gets Routing object or null
+         * 
+         * @return Routing 
+         */
+        public function getRouting()
+        {
+            if (isset($this->routing))
+            {
+                return $this->routing;
+            }
+            else
+            {
+                return null;
+            }
+        }
 	
+        /**
+         * _check_routes
+         * 
+         * Private funtion that validates current request against 
+         * configured routes (routes.php in Config Folder)
+         * 
+         * It sets the request params
+         * 
+         */
 	private function _check_routes() 
 	{
 		$uri = $_SERVER["REQUEST_URI"];
@@ -36,63 +85,73 @@ class Router {
 		
 	}
 	
+        /**
+         * _validate_request
+         * 
+         * Validates the request params and sets Routing Object
+         *      If request is invalid it sets Routing object to 404 error page
+         *      If request is not set it sets Routing object to default route
+         * 
+         * @return boolean
+         */
 	private function _validate_request() 
 	{
+                $req_OK = false;
+                $this->routing = new Routing();
+                
 		if (isset($this->req) && is_array($this->req) && count($this->req)>0) {
+                        
+                        
 			// controller name
 			if (file_exists(CONTROLLER_PATH.$this->req[0].'.php'))
 			{
-				$this->routing['controller_name'] = $this->req[0];
+				$this->routing->setControllerName($this->req[0]) ;
 			}
 			
 			// function name
 			if (isset($this->req[1]))
 			{
-				$this->routing['function_name'] = $this->req[1];
-			}
-			else
-			{
-				$this->routing['function_name'] = 'index';
-			}
+				$this->routing->setFunctionName($this->req[1]);
+			}			
 			
 			// function params
 			if (count($this->req)>2)
 			{
-				$this->routing['function_params'] = array_slice($this->req, 2);
-			}		
-			else 
-			{
-				$this->routing['function_params'] = array();	
-			}				
+				$this->routing->setFunctionParams(array_slice($this->req, 2));
+			}	
+						
 		}
 		
 		//check if the function exists within the controller
-		if ($this->routing['controller_name'])
+		if ($this->routing->getControllerName())
 		{
-			$file_path = CONTROLLER_PATH.$this->routing['controller_name'].'.php';	
-			$arr_name = explode('/',$this->routing['controller_name']);
+			$file_path = CONTROLLER_PATH.$this->routing->getControllerName().'.php';	
+			$arr_name = explode('/',$this->routing->getControllerName());
 			$var_name = array_pop($arr_name);
 			$class_name = ucfirst($var_name);
 			
 			require_once $file_path;
 			$controller = new $class_name();
 			
-			if (method_exists($controller, $this->routing['function_name']))
-			return;	
+			if (method_exists($controller, $this->routing->getFunctionName()))
+                        {
+                                //everything OK
+                                $req_OK = true;	
+                        }
 		}
 		
-		// if we reach this point.. it's a 404 or homepage
-		if ($this->uri)
+		// Check if it's a 404 or homepage
+		if ($this->uri && !$req_OK)
 		{			
-			$this->routing['controller_name'] = $this->routes['error404'];
-			$this->routing['function_name'] = 'index';
-			$this->routing['function_params'] = array();
+			$this->routing->setControllerName($this->routes['error404']);
+			$this->routing->setFunctionName('index');
+			$this->routing->setFunctionParams(array());
 		} 
-		else 
+		else if (!$this->uri)
 		{
-			$this->routing['controller_name'] = $this->routes['default'];
-			$this->routing['function_name'] = 'index';
-			$this->routing['function_params'] = array();
+			$this->routing->setControllerName($this->routes['default']);
+			$this->routing->setFunctionName('index');
+			$this->routing->setFunctionParams(array());
 		}
 	}
 }
