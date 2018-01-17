@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" media='screen'/>
 		
-		<script src="/resources/js/jquery.min.js"></script> 
+		<script src="/resources/js/vendor/jquery.min.js"></script> 
 		
 		<script src="/resources/js/comun.js"></script>
 		<script src="/resources/js/Detector.js"></script>
