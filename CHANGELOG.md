@@ -1,3 +1,7 @@
+== v0.8.0
+  * Refactor MVC
+  * Improve documentation
+
 == v0.7.2
   * add some messages when no images found in flickr
   * minor chages to css
