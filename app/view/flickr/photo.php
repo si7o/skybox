@@ -30,8 +30,8 @@
 		<meta name="twitter:image" content="<?=$thumbnail?>" />
 				
 		<script type="text/javascript" src="/resources/embed/swfobject.js"></script>		
-		<script src="/resources/js/three.min.js"></script>		
-		<script src="/resources/js/jquery.min.js"></script>  
+		<script src="/resources/js/vendor/three.min.js"></script>		
+		<script src="/resources/js/vendor/jquery.min.js"></script>  
 		
 		<script src="/resources/js/comun.js"></script>	
 		<script src="/resources/js/Detector.js"></script>
@@ -77,16 +77,16 @@
 		</div>
 		
 		<script>
-        <?if ( isset($photo_id) && $photo_id && $can_load):?>				
-		window.onload = function () {
-		    Pano.init('<?=$photo_id?>','flickr',<?=$equirectangular?>,<?=$sizes?>);
-		};
+                <?if ( isset($photo_id) && $photo_id && $can_load):?>				
+                    window.onload = function () {
+                        Pano.init('<?=$photo_id?>','flickr',<?=$equirectangular?>,<?=$sizes?>);
+                    };
 		<?else:?>
-		  var x = window.confirm('Sorry, this photo can only be seen in Flickr. \nWould you like to go to Flickr now?');
-		  if (x)
-		  {
-		      window.location.href = '<?=$url?>';
-		  }
+                    var x = window.confirm('Sorry, this photo can only be seen in Flickr. \nWould you like to go to Flickr now?');
+                    if (x)
+                    {
+                        window.location.href = '<?=$url?>';
+                    }
 		<?endif?>
 		</script> 
 	</body>

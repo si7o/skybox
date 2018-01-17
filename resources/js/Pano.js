@@ -5,7 +5,7 @@ var Pano = {
   	 * 
   	 * 	init(filename,type,equirectangular,sizes)
 	 *
-	 *  Initializes the panorama for flash, webgl or canvas.
+	 *  Initializes the panorama for webgl, canvas or flash.
 	 * 
 	 * @param filename : file or photo id
 	 * @param type: normal / flickr / file

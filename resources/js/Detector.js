@@ -118,12 +118,12 @@ var Detector = {
 	
 	getDefaultMode: function()
 	{
-		if (this.flash)
-			return 'flash';
-		else if (this.webgl)
+		if (this.webgl)
 			return 'webgl';
 		else if (this.canvas)
 			return 'canvas';
+		else if (this.flash)
+			return 'flash';
 		else 
 			return 'none';
 	}

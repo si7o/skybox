@@ -7,8 +7,8 @@
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" />
 				
 		<script type="text/javascript" src="/resources/embed/swfobject.js"></script>		
-		<script src="/resources/js/three.min.js"></script>		
-		<script src="/resources/js/jquery.min.js"></script>  
+		<script src="/resources/js/vendor/three.min.js"></script>		
+		<script src="/resources/js/vendor/jquery.min.js"></script>  
 		
 		<script src="/resources/js/comun.js"></script>	
 		<script src="/resources/js/Detector.js"></script>

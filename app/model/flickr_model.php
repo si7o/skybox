@@ -1,7 +1,27 @@
 <?php
+/**
+ * Flickr_model
+ * 
+ * Model used for treieving data from Flickr ussing Flikr Rest API
+ * API Doc: https://www.flickr.com/services/api/
+ */
 
-class Flickr_model extends App{
-	public function getAllPhotos ($page=1){
+
+class Flickr_model extends App
+{    
+        /**
+         * 
+         * getAllPhotos
+         * 
+         * Gets latest photos from Flickr users using Flickr Rest API
+         * 
+         * @param integer $page Page number
+         * 
+         * @return object Description:https://www.flickr.com/services/api/flickr.photos.search.html
+         *
+         */ 
+	public function getAllPhotos ($page=1)
+        {
 		$ttl=1800;
 		$key= 'photoshome_'.$page;
 		
@@ -21,28 +41,15 @@ class Flickr_model extends App{
 					'&page='.$page.
 					'&format=json'.
 					'&per_page=50'.
-					'&nojsoncallback=1';
-			
-			
-			$flickr_all_photos_group_url = FL_API_URL.
-					'?method=flickr.photos.search'.
-					'&api_key='.FL_KEY.
-					//'&tags=equirectangular'.
-					'&group_id=44671723%40N00'.
-					'&privacy_filter=1'.
-					//'&safe_search=1'.
-					'&media=photos'.
-					'&extras=path_alias%2Cowner_name%2Co_dims%2Curl_n'.
-					'&page='.$page.
-					'&format=json'.
-					'&per_page=50'.
-					'&nojsoncallback=1';
+					'&nojsoncallback=1';		
 			
 			$content = file_get_contents($flickr_all_photos_url);
 			$flickr_all_photos = json_decode($content);
 			
 			if ($flickr_all_photos && $flickr_all_photos->photos->total>0)
+                        {
 				$this->cache->set($content,$key,$ttl);
+                        }
 		}
 		else
 		{
@@ -51,8 +58,19 @@ class Flickr_model extends App{
 		return $flickr_all_photos;
 		
 	}
-
-	public function getPhotosHome ($page=1){
+        
+        /**
+         * @deprecated since version v0.4.1
+         * getPhotosHome
+         * 
+         * Retrieves latest photos from Flickr users and Equirectangular Group 
+         * using Flickr Rest API 
+         * 
+         * @param integer $page Page number
+         * @return array of Object Description:https://www.flickr.com/services/api/flickr.photos.search.html
+         */
+	public function getPhotosHome ($page=1)
+        {
 		$ttl=3600;
 		$key= 'photoshome_'.$page;
 		
@@ -106,8 +124,7 @@ class Flickr_model extends App{
 				{
 					$ids[] = $photo->id;
 					$flickr_all_photos_tmp[]=$photo;
-				}
-				
+				}				
 			}
 			
 			foreach ($all as $photo)
@@ -137,14 +154,20 @@ class Flickr_model extends App{
 		{
 			$flickr_all_photos = json_decode($cache);
 		}			
-				
-		//debug($flickr_all_photos); die;
-		
-		return $flickr_all_photos;
-		
-		
+						
+		return $flickr_all_photos;	
 	}
 	
+        
+        /**
+         * getUserPhotos
+         * 
+         * Retrieves latest equirectangular panramas from a Flickr user 
+         * 
+         * @param string $username Accepts both "Flickr NSID" or "username"
+         *          
+         * @return object Description:https://www.flickr.com/services/api/flickr.photos.search.html
+         */
 	public function getUserPhotos ($username){
 		$ttl=600;
 		$key= 'userphotos_'.$username;
@@ -192,8 +215,11 @@ class Flickr_model extends App{
 				$flickr_user_photos = json_decode($content);
 			}
 			
+                        //cache if there is content
 			if($flickr_user_photos && (int)$flickr_user_photos->photos->total > 0)
-				$this->cache->set($content,$key,$ttl);
+                        {
+                            $this->cache->set($content,$key,$ttl);
+                        }				
 		}
 		else
 		{
@@ -202,6 +228,11 @@ class Flickr_model extends App{
 		return $flickr_user_photos->photos;
 	}
 	
+        /**
+         * 
+         * @param string $photo_id 
+         * @return Object photo data
+         */
 	public function getPhoto ($photo_id){
 		$ttl=600;
 		$key= 'photodata_'.$photo_id;
@@ -211,32 +242,34 @@ class Flickr_model extends App{
 		if (!$cache)
 		{		
 			// photo info //
-	        $flickr_info_url = FL_API_URL.
-	                    '?method=flickr.photos.getInfo'.
-	                    '&api_key='.FL_KEY.
-	                    '&format='.FL_FORMAT.
-	                    '&photo_id='.$photo_id.
-	                    '&nojsoncallback=1';
+                        $flickr_info_url = FL_API_URL.
+                                    '?method=flickr.photos.getInfo'.
+                                    '&api_key='.FL_KEY.
+                                    '&format='.FL_FORMAT.
+                                    '&photo_id='.$photo_id.
+                                    '&nojsoncallback=1';
 	        
-	        $flickr_info = json_decode(file_get_contents($flickr_info_url));
-			
-			
-			// photo sizes //
-	        $flickr_sizes_url = FL_API_URL.
-	                    '?method=flickr.photos.getSizes'.
-	                    '&api_key='.FL_KEY.
-	                    '&format='.FL_FORMAT.
-	                    '&photo_id='.$photo_id.
-	                    '&nojsoncallback=1';
-	        
-	        $flickr_sizes = json_decode(file_get_contents($flickr_sizes_url));
+                        $flickr_info = json_decode(file_get_contents($flickr_info_url));
+
+
+                        // photo sizes //
+                        $flickr_sizes_url = FL_API_URL.
+                                    '?method=flickr.photos.getSizes'.
+                                    '&api_key='.FL_KEY.
+                                    '&format='.FL_FORMAT.
+                                    '&photo_id='.$photo_id.
+                                    '&nojsoncallback=1';
+
+                        $flickr_sizes = json_decode(file_get_contents($flickr_sizes_url));
 			
 			$res = new stdClass();			
 			$res->info = $flickr_info;
 			$res->sizes = $flickr_sizes;
 			
 			if ($flickr_info && $flickr_sizes)
-				$this->cache->set(json_encode($res),$key,$ttl);			
+                        {
+				$this->cache->set(json_encode($res),$key,$ttl);	
+                        }
 		} 
 		else
 		{
