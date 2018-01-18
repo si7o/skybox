@@ -23,7 +23,7 @@ class Flickr_model extends App
 	public function getAllPhotos ($page=1)
         {
 		$ttl=1800;
-		$key= 'photoshome_'.$page;
+		$key= 'photoshome_flickr_'.$page;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
@@ -72,7 +72,7 @@ class Flickr_model extends App
 	public function getPhotosHome ($page=1)
         {
 		$ttl=3600;
-		$key= 'photoshome_'.$page;
+		$key= 'photoshome_flickr_'.$page;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
@@ -170,7 +170,7 @@ class Flickr_model extends App
          */
 	public function getUserPhotos ($username){
 		$ttl=600;
-		$key= 'userphotos_'.$username;
+		$key= 'userphotos_flickr_'.$username;
 		
 		$cache = $this->cache->get($key,$ttl);
 		
@@ -235,7 +235,7 @@ class Flickr_model extends App
          */
 	public function getPhoto ($photo_id){
 		$ttl=600;
-		$key= 'photodata_'.$photo_id;
+		$key= 'photodata_flickr_'.$photo_id;
 		
 		$cache = $this->cache->get($key);
 		

@@ -26,6 +26,10 @@ define ('FL_KEY', '------------------------------');
 define ('FL_FORMAT', 'json');
 define ('FL_API_URL','https://api.flickr.com/services/rest/');
 
+define ('PX500_KEY', '--------------------');
+define ('PX500_FORMAT', 'json');
+define ('PX500_API_URL','https://api.500px.com/v1/');
+
 define ('IMGUR_CLIENT_ID', '---------------------------------');
 define ('IMGUR_API_URL', 'https://api.imgur.com/3/');
 

@@ -24,7 +24,7 @@
 	           This panorama viewer is based on Canvas, WebGL (<a href="http://threejs.org" target="_blank">threejs.org</a>) & Flash (<a href="http://pan0.net" target="_blank">pan0.net</a>) and should work on desktop & mobile (as long as you are using a 21st century browser ;) ).           	      
            </p>
            <p class="desc">
-           	   It started as simple panorama viewer (for 'local' files) and then added support to show panoramas from flickr, imgur and files hosted on other servers.
+           	   It started as simple panorama viewer (for 'local' files) and then added support to show panoramas from flickr, 500px, imgur and files hosted on other servers.
            	   <br />
            	   If you think there is something missing or not working propperly, please, <a href="https://github.com/si7o/skybox/issues" target="_blank">report an issue</a>
            </p>
@@ -40,7 +40,7 @@
 	</body>
 	<script language="JavaScript">
 		window.onload = function () {
-			Config.init();		    
+			Config.init();
 			Sharer.init();
 		};
 		
