@@ -20,16 +20,21 @@ class Proxy extends App{
          * @param string $_GET['file'] 
          * @param string $_GET['referer'] 
          * 
+         * If panorala is from 500px also
+         * 
+         * @param string $_GET['webp'] 
+         * @param string $_GET['sig'] 
+         * 
          */
         function index() {
-            $ttl = 600;        
+            $ttl = 3600;        
             $url = $_GET['file'];            
             $referer = $_GET['referer'];
-            $key = basename($url);
+            $key = $this->getCacheKey($url);
             
-            if (isset($_GET['webp'])&& isset ($_GET['sig']))
+            if (isset($_GET['webp']) && isset ($_GET['sig']) )
             {
-                $url .= "&webp=".$_GET['webp']."&sig=".$_GET['sig'];
+                $url .= "&webp=".$_GET['webp']."&sig=".$_GET['sig'];                
             }
             
             $cache = $this->cache->get($key);
@@ -139,6 +144,34 @@ class Proxy extends App{
                                 print_r($file); 
                         }     
         
-        }     
+        }  
+        
+        
+        /**
+         * 
+         * get500pxKey
+         * 
+         * Calculates the cache key for an image url
+         * 
+         * @param string $url Image URL
+         * @return string
+         */
+        private function getCacheKey($url)
+        {
+                if (strpos($url, "500px."))
+                {
+                        preg_match('/(photo\/\d+)/', $url, $matches);
+                        if (count($matches))
+                        {
+                                return "500px_".str_replace("/","_",$matches[0]).".jpg";
+                        }
+                }
+                else if (strpos($url, "flickr."))
+                {
+                        return "flickr_photo_".basename($url);
+                }
+                
+                return null;
+        }
         
     }
