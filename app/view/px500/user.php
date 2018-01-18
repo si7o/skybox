@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" media='screen'/>
 		
-		<script src="/resources/js/jquery.min.js"></script> 
+		<script src="/resources/js/vendor/jquery.min.js"></script> 
 		
 		<script src="/resources/js/comun.js"></script>
 		<script src="/resources/js/Detector.js"></script>
@@ -37,15 +37,17 @@
 	       
 	       <?if (isset($photos) && count($photos)>0):?>	   	   
 		   <ul class="listado_panoramicas">
-		   		<? foreach ($photos->photo as $photo) :?>
-		        <?if (isset($photo->o_width) && ($photo->o_width/$photo->o_height==2)):?>
+                        <?foreach ($photos as $photo) :?>
+		        <?if (isset($photo->width) && ($photo->width/$photo->height==2)):?>
 		       	<li>
-		       		<a href="/flickr/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/<?=$photo->id?>/">
-		           		<span class="flickr_list"><?=$photo->title?></span>	          	
-		        		<img src="<?=$photo->url_n?>" />
-		           	</a>
-		           	<div class="by">open in <a class="flickr" href="http://www.flickr.com/photos/<?=$photo->pathalias?$photo->pathalias:$photo->owner?>/<?=$photo->id?>/" target="_blank">Flickr</a> </div>
-		       	</li>
+                            <a href="/500px/<?= $photo->url?>/">
+                                <span class="px500_list"><?= $photo->name ?></span>	          	
+                                <img src="<?= $photo->image_url?>" />
+                            </a>
+                            <div class="by">
+                                by <a class="user" href="/500px/<?=$photo->user->username?>/"><?= $photo->user->fullname ?></a> on <a class="flickr" href="http://www.500px.com<?= $photo->url?>/" target="_blank">500px</a> 
+                            </div>
+                        </li>
 		       	<?endif;?>
 		       
 	           <?endforeach;?>

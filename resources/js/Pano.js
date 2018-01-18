@@ -88,6 +88,9 @@ var Pano = {
 				case 'flickr':
 					img.src=sizes.img_1024.source;
 					break;
+                                case '500px':
+					img.src=sizes.img_1024.url;
+					break;
 				case 'file':
 					img.src=self.photo;
 					break;
@@ -279,6 +282,22 @@ var Pano = {
 				for(var k in self.sizes) {
 				   if (self.sizes[k].width<=self.maxTextureSize)
 				   	imgsrc=	self.sizes[k].source;
+				}
+				
+				self.file = '/proxy?file='+imgsrc+'&referer='+window.location.href;
+				//self.file = '/proxy/file/'+imgsrc.replace(new RegExp('/', 'g'), '|')+'/referer/'+window.location.href.replace(new RegExp('/', 'g'), '|')+'/';
+				//log (self.file);
+				
+				
+				//self.file = '/proxyFlickrImage/'+self.photo+'/'+self.maxTextureSize;				
+				break;
+                        case '500px':
+				/*var photo_id = document.getElementById( 'photo_id' );*/
+				
+				var imgsrc = '';
+				for(var k in self.sizes) {
+				   if (self.sizes[k].size<=self.maxTextureSize)
+				   	imgsrc=	self.sizes[k].url;
 				}
 				
 				self.file = '/proxy?file='+imgsrc+'&referer='+window.location.href;

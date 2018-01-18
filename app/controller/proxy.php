@@ -23,9 +23,14 @@ class Proxy extends App{
          */
         function index() {
             $ttl = 600;        
-            $url = $_GET['file'];
-            $referer = $_GET['referer'];	
+            $url = $_GET['file'];            
+            $referer = $_GET['referer'];
             $key = basename($url);
+            
+            if (isset($_GET['webp'])&& isset ($_GET['sig']))
+            {
+                $url .= "&webp=".$_GET['webp']."&sig=".$_GET['sig'];
+            }
             
             $cache = $this->cache->get($key);
             if (!$cache)
@@ -52,7 +57,7 @@ class Proxy extends App{
                     }
             }
             else
-            {				
+            {
                     $file = $cache;
             }
 
@@ -134,6 +139,6 @@ class Proxy extends App{
                                 print_r($file); 
                         }     
         
-    }    
-   
-}
+        }     
+        
+    }

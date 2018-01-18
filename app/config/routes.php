@@ -22,7 +22,8 @@ $routes['flickr/photos/([^/]+)'] = "flickr/user/$1";
 
 $routes['500px'] = "px500/index";
 
-$routes['500px/(\d+)'] = "px500/photo/$1";
-$routes['500px/photo/([^/]+)/(\d+)'] = "px500/photo/$2";
+//$routes['500px/(\d+)'] = "px500/photo/$1";
+$routes['500px/user/([^/]+)'] = "px500/user/$1";
+$routes['500px/photo/(\d+)/([^/]+)'] = "px500/photo/$1";
 
 $routes['500px/([^/]+)'] = "px500/user/$1";

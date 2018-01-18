@@ -16,9 +16,7 @@ class Px500 extends App {
         $photos = $this->px500_model->getAllPhotos();
 
         $data['photos'] = $photos->photos;
-         
-          //debug($photos);          die;
-
+        
         $this->load_view('px500/home', $data);
     }
 
@@ -29,54 +27,49 @@ class Px500 extends App {
         $data['config'] = $this->load_view('comun/config', null, true);
         $data['generate'] = $this->load_view('comun/generate', null, true);
 
-        $data['photos'] = $this->flickr_model->getUserPhotos($username);
+        $data['photos'] = $this->px500_model->getUserPhotos($username);
 
-        $data['username'] = isset($data['photos']->photo[0]->ownername) && $data['photos']->photo[0]->ownername ? $data['photos']->photo[0]->ownername : $username;
+        $data['username'] = $username;
 
         //debug($data['photos']); die;
         $this->load_view('px500/user', $data);
     }
 
-    function photo($photo_id) {
+    function photo($photo_id, $uri="") {
 
 
         $data['menu'] = $this->load_view('comun/pano_menu', null, true);
         $data['config'] = $this->load_view('comun/config', null, true);
         $data['generate'] = $this->load_view('comun/generate', null, true);
 
-        $flickr = $this->flickr_model->getPhoto($photo_id);
+        $photo_data = $this->px500_model->getPhoto($photo_id);
 
-        if (isset($flickr->info->photo)) {
-            $data['thumbnail'] = "http://farm{$flickr->info->photo->farm}.staticflickr.com/{$flickr->info->photo->server}/{$flickr->info->photo->id}_{$flickr->info->photo->secret}_m.jpg";
+        if (isset($photo_data->photo)) {
+                $data['thumbnail'] = $photo_data->photo->image_url;
+                $data['username'] = $photo_data->photo->user->username;
+                $data['can_load'] = true;
+                $data['photo_id'] = $photo_id;
+                $data['title'] = $photo_data->photo->name;
+                $desc = strip_tags($photo_data->photo->description);
+                if (strlen($desc) > 200)
+                {
+                        $desc = substr($desc, 0, 200) . '...';
+                }
+                
+                $data['desc'] = $desc;
+                $data['url'] = "http://www.500px.com{$photo_data->photo->url}";
+                $data['self_url'] = DOMAIN_NAME . "px500" . $photo_data->photo->url . "/";
+                
+                $sizes = array();
+                foreach ($photo_data->photo->images as $img) {
+                        if ($img->size >= 1024) {
+                                $sizes['img_' . $img->size] = $img;
+                        }
+                }
+                $data['sizes'] = json_encode($sizes);
+                $data['equirectangular'] = ( $photo_data->photo->width / $photo_data->photo->height == 2 ? 'true' : 'false' );
         }
-
-
-
-        $data['username'] = $flickr->info->photo->owner->path_alias ? $flickr->info->photo->owner->path_alias : $flickr->info->photo->owner->nsid;
-        $data['can_load'] = $flickr->info->photo->usage->canshare || false;
-        $data['photo_id'] = $photo_id;
-        $data['title'] = $flickr->info->photo->title->_content;
-        $desc = strip_tags($flickr->info->photo->description->_content);
-        if (strlen($desc) > 200)
-            $desc = substr($desc, 0, 200) . '...';
-        $data['desc'] = $desc;
-        $data['url'] = $flickr->info->photo->urls->url[0]->_content;
-        $data['self_url'] = DOMAIN_NAME . "px500/photos/" . $data['username'] . "/" . $photo_id . "/";
-
-
-        $sizes = array();
-        foreach ($flickr->sizes->sizes->size as $img) {
-            if ($img->width >= 1024) {
-                $sizes['img_' . $img->width] = $img;
-            }
-        }
-        $elem_tmp = array_shift(array_values($sizes));
-
-        $data['equirectangular'] = ( $elem_tmp->width / $elem_tmp->height == 2 ? 'true' : 'false' );
-
-
-        $data['sizes'] = json_encode($sizes);
-
+        
         //debug($data); die;        
 
         $this->load_view('px500/photo', $data);

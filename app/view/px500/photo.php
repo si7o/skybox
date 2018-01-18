@@ -30,8 +30,8 @@
 		<meta name="twitter:image" content="<?=$thumbnail?>" />
 				
 		<script type="text/javascript" src="/resources/embed/swfobject.js"></script>		
-		<script src="/resources/js/three.min.js"></script>		
-		<script src="/resources/js/jquery.min.js"></script>  
+		<script src="/resources/js/vendor/three.min.js"></script>		
+		<script src="/resources/js/vendor/jquery.min.js"></script>  
 		
 		<script src="/resources/js/comun.js"></script>	
 		<script src="/resources/js/Detector.js"></script>
@@ -62,12 +62,12 @@
 		    <p>	      
 			    <span class="titulo"><?=$title?></span>
 			    <span class="desc"><?=$desc?>. </span>
-			    <a href="<?=$url?>" title="Open in flickr!" target="_blank" class="flickr"> 
+			    <a href="<?=$url?>" title="Open in flickr!" target="_blank" class="px500"> 
 			      	open in 
-		      		<span>flick<span>r</span></span>
+		      		<span>500px</span>
 		    	</a>
 		    	or
-		    	<a href="/flickr/photos/<?=$username?>/" title="Show more panoramas from this user" class="more"> 
+		    	<a href="/500px/<?=$username?>/" title="Show more panoramas from this user" class="more"> 
 			      	<strong>more from this user</strong>
 		    	</a>
 		    </p>           
@@ -79,7 +79,7 @@
 		<script>
         <?if ( isset($photo_id) && $photo_id && $can_load):?>				
 		window.onload = function () {
-		    Pano.init('<?=$photo_id?>','flickr',<?=$equirectangular?>,<?=$sizes?>);
+		    Pano.init('<?=$photo_id?>','500px',<?=$equirectangular?>,<?=$sizes?>);
 		};
 		<?else:?>
 		  var x = window.confirm('Sorry, this photo can only be seen in Flickr. \nWould you like to go to Flickr now?');
