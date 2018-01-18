@@ -16,6 +16,8 @@ Open MY_constants.php located at /app/config, add your Flickr api key and yout I
 ```php
 define ('FL_KEY', '--------YOUR FLICKR API KEY--------');
 
+define ('PX500_KEY', '--------YOUR FLICKR API KEY--------');
+
 define ('IMGUR_CLIENT_ID', '--------YOUR IMGUR CLIENT ID--------');
 
 ```
@@ -24,9 +26,11 @@ define ('IMGUR_CLIENT_ID', '--------YOUR IMGUR CLIENT ID--------');
 tasklist
 --------
 
+* [ ] redesign frontend
+* [ ] update three.js version (using:58 - curren:90)
+* [ ] add support for mobile acelerometer
 * [ ] geolocate panoramas (using openStreetMap)
-* [ ] add MySQL databases to MVC &  use a database instead of JSON files?
-* [ ] add support for 500px
+* [ ] add MySQL databases to MVC & use a database instead of JSON files? Namespaces? maybe use a real MVC framework?
 
 
 known bugs
