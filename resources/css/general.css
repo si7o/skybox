@@ -421,7 +421,7 @@ body.home div.generate #url_sharer .close{
 	display:block;
 }
 
-body.home_flickr div.generate, body.home_px div.generate{
+body.home_flickr div.generate, body.home_px500 div.generate{
 	top:210px;
 }
 
@@ -910,7 +910,7 @@ ul.listado_panoramicas_500 li span{
    		top:237px;
     }     */ 
    
-    .home_flickr  ul.listado_panoramicas, .home_px  ul.listado_panoramicas{
+    .home_flickr  ul.listado_panoramicas, .home_px500  ul.listado_panoramicas{
    		top:300px ;
     }
    

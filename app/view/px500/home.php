@@ -15,7 +15,7 @@
         <script src="/resources/js/sharer.js"></script>
 
     </head>
-    <body class="home home_px">
+    <body class="home home_px500">
 
         <?= $menu ?>
 
@@ -44,7 +44,7 @@
                             <img src="<?= $photo->image_url?>" />
                         </a>
                         <div class="by">
-                            by <a class="user" href="/500px/<?=$photo->user->username?>/"><?= $photo->user->fullname ?></a> on <a class="flickr" href="http://www.500px.com/<?= $photo->user->username?>/" target="_blank">500px</a> 
+                            by <a class="user" href="/500px/<?=$photo->user->username?>/"><?= $photo->user->fullname ?></a> on <a class="px500" href="http://www.500px.com/<?= $photo->user->username?>/" target="_blank">500px</a> 
                         </div>
                     </li>
                     <?endif;?>

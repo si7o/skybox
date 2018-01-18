@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>VR viewer | Flickr - <?=$username?> - <?=$title?></title>
+		<title>VR viewer | 500px - <?=$username?> - <?=$title?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="/resources/css/general.css" type="text/css" />
@@ -9,7 +9,7 @@
 		
 		
 		<!-- for Google -->		
-		<meta name="description" content="<?=$desc?>  - by <?=$username?> from Flickr" />
+		<meta name="description" content="<?=$desc?>  - by <?=$username?> from 500px" />
 		<meta name="keywords" content="<?=$title?>" />
 		
 		<meta name="author" content="<?=$username?>" />
@@ -21,12 +21,12 @@
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="<?=$thumbnail?>" />
 		<meta property="og:url" content="<?=$self_url?>" />
-		<meta property="og:description" content="<?=$desc?> - by <?=$username?> from Flickr" />
+		<meta property="og:description" content="<?=$desc?> - by <?=$username?> from 500px" />
 		
 		<!-- for Twitter -->          
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="<?=$title?>" />
-		<meta name="twitter:description" content="<?=$desc?>  - by <?=$username?> from Flickr" />
+		<meta name="twitter:description" content="<?=$desc?>  - by <?=$username?> from 500px" />
 		<meta name="twitter:image" content="<?=$thumbnail?>" />
 				
 		<script type="text/javascript" src="/resources/embed/swfobject.js"></script>		
@@ -62,7 +62,7 @@
 		    <p>	      
 			    <span class="titulo"><?=$title?></span>
 			    <span class="desc"><?=$desc?>. </span>
-			    <a href="<?=$url?>" title="Open in flickr!" target="_blank" class="px500"> 
+			    <a href="<?=$url?>" title="Open in 500px!" target="_blank" class="px500"> 
 			      	open in 
 		      		<span>500px</span>
 		    	</a>
@@ -82,7 +82,7 @@
 		    Pano.init('<?=$photo_id?>','500px',<?=$equirectangular?>,<?=$sizes?>);
 		};
 		<?else:?>
-		  var x = window.confirm('Sorry, this photo can only be seen in Flickr. \nWould you like to go to Flickr now?');
+		  var x = window.confirm('Sorry, this photo can only be seen in 500px. \nWould you like to go to 500px now?');
 		  if (x)
 		  {
 		      window.location.href = '<?=$url?>';
