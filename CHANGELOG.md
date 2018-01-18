@@ -3,6 +3,7 @@
   * Improve documentation
   * Refactor frontend
   * Update jQuery version
+  * Added support for 500px
 
 == v0.7.2
   * add some messages when no images found in flickr
