@@ -78,7 +78,7 @@ tasklist
 * [ ] update three.js version (using:58 - curren:90)
 * [ ] add support for mobile sensors (accelerometer)
 * [ ] geolocate panoramas (using openStreetMap)
-* [ ] add MySQL databases to MVC & use a database instead of JSON files? Namespaces? better Error Control/exception handling? Unit Testing?... maybe use a real MVC framework?
+* [ ] add MySQL databases to MVC & use a database instead of JSON files? Namespaces? better Error Control/exception handling? Unit Testing?... maybe use a real MVC framework :P ?
 
 
 known bugs
