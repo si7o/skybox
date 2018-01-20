@@ -94,7 +94,7 @@ body.home .centered{
 	background: url("/resources/img/sprite.png") no-repeat scroll -137px -139px transparent;
 }
 
-#menu .px500:hover, #menu .flickr.selected{
+#menu .px500:hover, #menu .px500.selected{
 	background: url("/resources/img/sprite.png") no-repeat scroll -137px -156px transparent;
 }
 
