@@ -18,7 +18,7 @@ Download code and open MY_constants.php located at /app/config, add your Flickr 
 ```php
 define ('FL_KEY', '--------YOUR FLICKR API KEY--------');
 
-define ('PX500_KEY', '--------YOUR FLICKR API KEY--------');
+define ('PX500_KEY', '--------YOUR 500PX API KEY--------');
 
 define ('IMGUR_CLIENT_ID', '--------YOUR IMGUR CLIENT ID--------');
 
