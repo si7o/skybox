@@ -921,6 +921,13 @@ ul.listado_panoramicas_500 li span{
     .home_flickr  ul.listado_panoramicas, .home_px500  ul.listado_panoramicas{
    		top:300px ;
     }
+    
+    #menu .about, #menu .git, #menu .conf{
+        text-indent:100%;
+        display:inline-block;
+        overflow:hidden;
+        width:0px;        
+    }
    
     div.about{   		
    		float:left;
