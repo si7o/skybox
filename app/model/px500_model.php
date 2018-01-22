@@ -3,12 +3,15 @@
 class Px500_model extends App{
     
         /**
-         * 
+         * getAllPhotos
+	 *
+	 * gets latest trending photos from 500px tagged as "equirectangular"
+	 *
          * API calls: 
          *      - search photos: https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md
          * 
-         * @param type $page
-         * @return type
+         * @param integer $page
+         * @return Object
          */
 	public function getAllPhotos ($page=1){
 		$ttl=1800;
@@ -45,13 +48,15 @@ class Px500_model extends App{
         /**
          * getUserPhotos
          * 
+	 * Gets latest photos from $username tagged as "equirectangular"
+	 *
          * API calls: 
          *      - user info: https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_show.md
          *      - search photos: https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md
          * 
          * 
-         * @param type $username
-         * @return type 
+         * @param string $username
+         * @return Object 
          */
 	public function getUserPhotos ($username){
 		$ttl=600;
@@ -110,12 +115,12 @@ class Px500_model extends App{
 	
         /**
          * getPhoto
-         * 
+	 *
          * API calls:
          *      - Photo data: https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id.md
          * 
-         * @param type $photo_id
-         * @return type
+         * @param string $photo_id
+         * @return Object
          */
 	public function getPhoto ($photo_id){
 		$ttl=600;
