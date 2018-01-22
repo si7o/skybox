@@ -6,7 +6,14 @@ class Px500 extends App {
 
         $this->load_model('px500_model');
     }
-
+    
+    /**
+     * index
+     * 
+     * Main controller function. Loads and displays the trending 
+     * 500px equirectangular panoramas (list)
+     * 
+     */
     function index() {
         $data['selected'] = '500px';
         $data['menu'] = $this->load_view('comun/menu', $data, true);
@@ -20,6 +27,15 @@ class Px500 extends App {
         $this->load_view('px500/home', $data);
     }
 
+    /**
+     * user
+     * 
+     * Loads and displays the latest 500px equirectangular panoramas (list)
+     * from a given username
+     * 
+     * @param string $username 500px username to load photos from     
+     * 
+     */
     function user($username) {
 
 
@@ -35,6 +51,15 @@ class Px500 extends App {
         $this->load_view('px500/user', $data);
     }
 
+    /**
+     * photo
+     * 
+     * Loads and displays a 500px equirectangular panorama
+     * 
+     * @param string $photo_id Flickr photo_id to load  
+     * @param string $uri uri, title of the photo & user  
+     * 
+     */
     function photo($photo_id, $uri="") {
 
 
