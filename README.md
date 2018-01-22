@@ -54,16 +54,33 @@ custom MVC disclaimer
 
 The project uses a custom MVC. 
 It was developed by the end of 2013 and it is inspired in codeigniter 2.0 so it follows some of its principles. 
-I did not use Codeigniter or Symfony because I wanted to keep this project simple, lightweight and take advantage of the MVC principle.
+I did not use Codeigniter or Symfony because I wanted to keep this project simple yet lightweight yet take advantage of the MVC principle.
 
-It's just a proof of concept I did to learn the basics of boulding an MVC from scratch so it lacks lots of functionalities found on real MVCs out there
+It's just a proof of concept I did to learn the basics of building an MVC from scratch so it lacks lots of functionalities found on real MVCs out there
 
 It includes 
 - basic routing (/app/config/routes.php)
+```php
+  $routes['proxy/file/([^/]+)/referer/([^/]+)'] = "proxy/file/$1/$2";
+```
 - models
+```php
+  $this->load_model('flickr_model');
+  $photos = $this->flickr_model->getAllPhotos();
+```
 - views 
+```php
+  $data['menu'] = $this->load_view('comun/menu', $data, true);
+  $this->load_view('flickr/home', $data);
+```
 - controllers
 - cache system (file based, could be changed to use memcached)
+```php
+  $cache = $this->cache->get($key,$ttl);
+  ...
+  $this->cache->set($content,$key,$ttl);
+```
+- helper
 
 It lacks
 - error handling
