@@ -27,3 +27,9 @@ $routes['500px/user/([^/]+)'] = "px500/user/$1";
 $routes['500px/photo/(\d+)/([^/]+)'] = "px500/photo/$1";
 
 $routes['500px/([^/]+)'] = "px500/user/$1";
+
+/** flickr api */
+$routes['api/flickr'] = "flickrApi/index";
+$routes['api/flickr/(\d+)'] = "flickrApi/photo/$1";
+$routes['api/flickr/photos/([^/]+)/(\d+)'] = "flickrApi/photo/$2";
+$routes['api/flickr/photos/([^/]+)'] = "flickrApi/user/$1";
