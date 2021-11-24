@@ -127,7 +127,7 @@ class FlickrApi extends App{
     $elem_tmp;
     foreach( $flickr->sizes->sizes->size as $img )
     {
-      if ( $img->width <= 1024 )
+      if ( $img->width <= 1600 )
       {
         $data['sdUrl']=$img->source;
       } else if ( $img->width <= 4096 )
