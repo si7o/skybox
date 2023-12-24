@@ -6,9 +6,8 @@
  */
 error_reporting(E_ERROR);
 
-define("DS","/",true);
-define('BASE_PATH',realpath(dirname(__FILE__)).DS,true);
-
+define("DS","/");
+define('BASE_PATH',realpath(dirname(__FILE__)).DS);
 
 include BASE_PATH.'app/config/constants.php';
 require_once CORE_PATH.'helper.php';
@@ -22,5 +21,5 @@ $Router = new Router();
 
 $r = $Router->getRouting();
 
-$App->load_controller($r->getControllerName());	
+$App->load_controller($r->getControllerName());
 $App->{$r->getControllerName()}->{$r->getFunctionName()}(...$r->getFunctionParams());

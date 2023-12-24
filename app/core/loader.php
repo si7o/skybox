@@ -1,7 +1,7 @@
 <?php
 //TODO: Class for loading classes
 class Load extends App {
-	function Load () {
-		parent::__construct();	
+	public function __construct () {
+		parent::__construct();
 	}
 }

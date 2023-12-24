@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Error404
  * 
@@ -6,21 +7,18 @@
  * 
  */
 
-class Error404 extends App{
-	function Error404 () {
-		parent::__construct();	
-	}
-	
+class Error404 extends App
+{
+
 	/**
-         * index
-         * 
-         * Main error page
-         * 
-         */
+	 * index
+	 * 
+	 * Main error page
+	 * 
+	 */
 	function index()
 	{
 		header("HTTP/1.0 404 Not Found");
 		$this->load_view('error404');
 	}
-	
 }
